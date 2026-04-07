@@ -7,6 +7,8 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "echo 'Monorepo initialized. Run apps individually or add Turborepo.' && sleep infinity"
+    "dev": "echo 'Monorepo initialized. Run apps individually or add Turborepo.' && sleep infinity",
+    "dev:empresas": "npm run dev -w @mesoquick/app-empresas",
+    "dev:repartidores": "npm run dev -w @mesoquick/app-repartidores"
   }
 }
