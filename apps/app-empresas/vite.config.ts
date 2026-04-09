@@ -11,7 +11,19 @@ export default defineConfig({
     },
   },
   server: {
-    port: 5174, // Puerto diferente al de app-repartidores (5173)
-    host: true,
+    port: 5174, // Puerto para app-empresas (repartidores usa 5173)
+    host: '0.0.0.0', // Permitir conexiones externas
+    watch: {
+      usePolling: true, // Necesario para Docker
+    },
+    proxy: {
+      // Proxy para evitar CORS
+      '/api': {
+        target: 'https://restaurantes.fly.dev',
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/api/, '/api'),
+      },
+    },
   },
 })

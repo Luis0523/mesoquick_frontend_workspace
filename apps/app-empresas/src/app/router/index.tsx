@@ -9,6 +9,12 @@ import { MainLayout } from '../layout/MainLayout';
 // Pages (lazy loading para mejor performance)
 import { DashboardPage } from '@/pages/dashboard/DashboardPage';
 import { RestaurantPage } from '@/pages/restaurant/RestaurantPage';
+import { ProductsListPage } from '@/pages/products/ProductsListPage';
+import { CreateProductPage } from '@/pages/products/CreateProductPage';
+import { EditProductPage } from '@/pages/products/EditProductPage';
+import { SchedulePage } from '@/pages/schedule/SchedulePage';
+import { OrdersListPage } from '@/pages/orders/OrdersListPage';
+import { OrderDetailPage } from '@/pages/orders/OrderDetailPage';
 import { NotFoundPage } from '@/pages/not-found/NotFoundPage';
 
 export const router = createBrowserRouter([
@@ -35,30 +41,30 @@ export const router = createBrowserRouter([
       },
       
       // TODO: Agregar más rutas según se implementen
-      // {
-      //   path: 'products',
-      //   element: <ProductsListPage />,
-      // },
-      // {
-      //   path: 'products/new',
-      //   element: <CreateProductPage />,
-      // },
-      // {
-      //   path: 'products/:id/edit',
-      //   element: <EditProductPage />,
-      // },
-      // {
-      //   path: 'schedule',
-      //   element: <SchedulePage />,
-      // },
-      // {
-      //   path: 'orders',
-      //   element: <OrdersListPage />,
-      // },
-      // {
-      //   path: 'orders/:id',
-      //   element: <OrderDetailPage />,
-      // },
+      {
+        path: 'products',
+        element: <ProductsListPage />,
+      },
+      {
+        path: 'products/new',
+        element: <CreateProductPage />,
+      },
+      {
+        path: 'products/:id/edit',
+        element: <EditProductPage />,
+      },
+      {
+        path: 'schedule',
+        element: <SchedulePage />,
+      },
+      {
+        path: 'orders',
+        element: <OrdersListPage />,
+      },
+      {
+        path: 'orders/:id',
+        element: <OrderDetailPage />,
+      },
       // {
       //   path: 'profile',
       //   element: <ProfilePage />,

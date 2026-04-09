@@ -4,8 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    @apply bg-base font-sans text-gray-900;
-  }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f7f7f7;
+  color: #1f2937;
 }

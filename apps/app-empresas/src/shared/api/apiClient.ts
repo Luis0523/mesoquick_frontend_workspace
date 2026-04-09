@@ -1,9 +1,16 @@
 /**
  * Cliente Axios configurado
  * Instancia única de axios con interceptores globales
+ * 
+ * TODO: Migrar a @mesoquick/core-network cuando esté disponible
+ * Según manual de estandarización, todas las peticiones deben usar
+ * la instancia Singleton del paquete compartido para garantizar:
+ * - Inyección automática de JWT
+ * - Manejo de 401 con refresh token
+ * - Manejo de 5xx con reconexión automática
  */
 
-import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
+import axios, { AxiosError } from 'axios';
 import { API_CONFIG } from '../config/api.config';
 import { ENV } from '../config/env.config';
 
@@ -12,7 +19,7 @@ export const apiClient = axios.create(API_CONFIG);
 
 // Interceptor de Request
 apiClient.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
+  (config) => {
     // Log en desarrollo
     if (ENV.IS_DEVELOPMENT) {
       console.log(`🚀 ${config.method?.toUpperCase()} ${config.url}`, config.data);
@@ -20,7 +27,7 @@ apiClient.interceptors.request.use(
 
     // TODO: Agregar token de autenticación cuando esté disponible
     // const token = localStorage.getItem('auth_token');
-    // if (token) {
+    // if (token && config.headers) {
     //   config.headers.Authorization = `Bearer ${token}`;
     // }
 

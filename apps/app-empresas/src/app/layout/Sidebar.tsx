@@ -25,27 +25,24 @@ export const Sidebar = () => {
       path: '/dashboard' 
     },
     { 
-      label: 'Mi Restaurante', 
+      label: 'Mi Negocio', 
       icon: Store, 
       path: '/restaurant' 
     },
     { 
       label: 'Productos', 
       icon: Pizza, 
-      path: '/products',
-      disabled: true // TODO: Habilitar cuando esté implementado
+      path: '/products'
     },
     { 
       label: 'Horarios', 
       icon: Clock, 
-      path: '/schedule',
-      disabled: true // TODO: Habilitar cuando esté implementado
+      path: '/schedule'
     },
     { 
       label: 'Pedidos', 
       icon: Package, 
-      path: '/orders',
-      disabled: true // TODO: Habilitar cuando esté implementado
+      path: '/orders'
     },
   ];
 
@@ -72,20 +69,6 @@ export const Sidebar = () => {
       <nav className="flex-1 p-4 space-y-1">
         {navItems.map((item) => {
           const Icon = item.icon;
-          const isDisabled = item.disabled;
-
-          if (isDisabled) {
-            return (
-              <div
-                key={item.path}
-                className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 cursor-not-allowed"
-                title="Próximamente"
-              >
-                <Icon size={20} />
-                <span className="text-sm font-medium">{item.label}</span>
-              </div>
-            );
-          }
 
           return (
             <NavLink

@@ -41,7 +41,7 @@ export const DashboardPage = () => {
       <div>
         <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
         <p className="text-gray-600 mt-1">
-          Bienvenido a {restaurant?.nombre || 'tu restaurante'}
+          Bienvenido a {restaurant?.nombre || 'tu negocio'}
         </p>
       </div>
 
@@ -77,7 +77,7 @@ export const DashboardPage = () => {
       {restaurant && (
         <div className="bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">
-            Información del Restaurante
+            Información del Negocio
           </h2>
           <div className="space-y-3">
             <InfoRow label="Nombre" value={restaurant.nombre} />

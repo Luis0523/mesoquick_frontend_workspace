@@ -36,7 +36,7 @@ const initialState = {
   error: null,
 };
 
-export const useRestaurantStore = create<RestaurantStore>((set, get) => ({
+export const useRestaurantStore = create<RestaurantStore>((set) => ({
   ...initialState,
 
   /**

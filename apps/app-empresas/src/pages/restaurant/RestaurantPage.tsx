@@ -6,7 +6,7 @@
 import { useEffect, useState } from 'react';
 import { useRestaurantStore } from '@/features/manage-restaurant/model/useRestaurantStore';
 import { getCurrentRestaurantId } from '@/shared/mocks/mockAuth';
-import { Edit2, Save, X, Toggle } from 'lucide-react';
+import { Edit2, Save, X, Power } from 'lucide-react';
 import type { UpdateRestaurantDTO } from '@/entities/restaurant/model/types';
 
 export const RestaurantPage = () => {
@@ -95,7 +95,7 @@ export const RestaurantPage = () => {
   if (!restaurant) {
     return (
       <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-        <p className="text-yellow-700">No se encontró información del restaurante</p>
+        <p className="text-yellow-700">No se encontró información del negocio</p>
       </div>
     );
   }
@@ -105,9 +105,9 @@ export const RestaurantPage = () => {
       {/* Header */}
       <div className="flex justify-between items-start">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Mi Restaurante</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Mi Negocio</h1>
           <p className="text-gray-600 mt-1">
-            Gestiona la información de tu negocio
+            Gestiona la información de tu empresa
           </p>
         </div>
         
@@ -161,8 +161,8 @@ export const RestaurantPage = () => {
                 : 'bg-green-100 text-green-700 hover:bg-green-200'
             }`}
           >
-            <Toggle size={20} />
-            {restaurant.disponible ? 'Cerrar Temporalmente' : 'Abrir Restaurante'}
+            <Power size={20} />
+            {restaurant.disponible ? 'Cerrar Temporalmente' : 'Abrir Negocio'}
           </button>
         </div>
       </div>
@@ -190,7 +190,7 @@ export const RestaurantPage = () => {
               label="Nombre *"
               value={formData.nombre || ''}
               onChange={(value) => setFormData({ ...formData, nombre: value })}
-              placeholder="Nombre del restaurante"
+              placeholder="Nombre del negocio"
             />
             <InputField
               label="Dirección *"
@@ -215,7 +215,7 @@ export const RestaurantPage = () => {
               label="Descripción"
               value={formData.descripcion || ''}
               onChange={(value) => setFormData({ ...formData, descripcion: value })}
-              placeholder="Describe tu restaurante..."
+              placeholder="Describe tu negocio..."
             />
             <InputField
               label="Logo URL"

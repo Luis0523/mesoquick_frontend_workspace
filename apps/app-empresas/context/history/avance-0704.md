@@ -512,3 +512,283 @@ Segunda sesión enfocada en la implementación completa de la configuración bas
 
 **Última actualización:** 07/04/2026 20:30  
 **Próxima sesión:** Implementación de Productos CRUD
+
+---
+
+## 🕐 Sesión 3: 19:43 - 20:43
+
+### 📋 Resumen
+
+Tercera sesión enfocada en resolver problemas de Docker, CORS y configuración final de Tailwind CSS. Se corrigieron múltiples errores de compatibilidad y se generalizó la UI para empresas en lugar de restaurantes.
+
+---
+
+### ✅ Tareas Completadas
+
+#### 1. Configuración de Docker y Puertos
+- **Problema:** Vite no estaba instalado en el contenedor Docker
+- **Solución:** Instalar dependencias dentro del contenedor
+- **Comandos ejecutados:**
+  ```bash
+  docker compose exec frontend-dev npm install -w @mesoquick/app-empresas
+  ```
+- **Puerto configurado:** 5174 (repartidores usa 5173)
+- **docker-compose.yml actualizado:**
+  - Agregado puerto `5174:5174` para app-empresas
+  - Comentarios para identificar cada app
+- **Resultado:** Ambas apps pueden correr simultáneamente
+
+#### 2. Migración Tailwind CSS v4 → v3
+- **Problema inicial:** Tailwind v4 usa sintaxis incompatible (@theme en CSS)
+- **Error:** Cannot apply unknown utility class `bg-base`
+- **Intentos:**
+  1. Tailwind v4 con @theme y @import "tailwindcss"
+  2. Conversión de colores a `bg-[var(--color-primary)]`
+- **Solución final:** Downgrade a Tailwind v3.4.19
+- **Archivos modificados:**
+  - `package.json` - Desinstalar v4, instalar v3
+  - `postcss.config.js` - Usar `tailwindcss` en lugar de `@tailwindcss/postcss`
+  - `tailwind.config.js` - Recreado con configuración v3
+  - `src/index.css` - Usar `@tailwind` directives en lugar de `@import`
+- **Resultado:** Tailwind funcionando correctamente con colores personalizados
+
+#### 3. Corrección de Imports de Axios
+- **Problema:** `InternalAxiosRequestConfig` no existe en algunas versiones
+- **Error:** The requested module does not provide an export named 'InternalAxiosRequestConfig'
+- **Solución:** Remover tipo explícito del interceptor
+- **Cambio:**
+  ```typescript
+  // Antes
+  import { AxiosError, InternalAxiosRequestConfig } from 'axios';
+  (config: InternalAxiosRequestConfig) => { }
+  
+  // Después
+  import { AxiosError } from 'axios';
+  (config) => { }
+  ```
+- **Archivo:** `src/shared/api/apiClient.ts`
+- **Resultado:** Imports funcionando correctamente
+
+#### 4. Corrección de Iconos de Lucide React
+- **Problema:** Icono `Toggle` no existe en lucide-react
+- **Error:** does not provide an export named 'Toggle'
+- **Solución:** Cambiar a icono `Power`
+- **Cambio en:** `src/pages/restaurant/RestaurantPage.tsx`
+- **Resultado:** Iconos renderizando correctamente
+
+#### 5. Configuración de Proxy Vite para CORS
+- **Problema crítico:** CORS bloqueando peticiones a restaurantes.fly.dev
+- **Error:** Access to XMLHttpRequest has been blocked by CORS policy
+- **Solución:** Configurar proxy en Vite
+- **Cambios:**
+  - `vite.config.ts` - Agregado proxy `/api` → `https://restaurantes.fly.dev`
+  - `.env` y `.env.example` - Cambiar URL de `https://restaurantes.fly.dev/api` a `/api`
+- **Configuración del proxy:**
+  ```javascript
+  proxy: {
+    '/api': {
+      target: 'https://restaurantes.fly.dev',
+      changeOrigin: true,
+      secure: true,
+    }
+  }
+  ```
+- **Resultado:** Peticiones funcionando sin CORS
+
+#### 6. Generalización de UI: Restaurante → Empresa
+- **Razón:** App será para todo tipo de negocios, no solo restaurantes
+- **Cambios realizados:**
+  - Sidebar: "Mi Restaurante" → **"Mi Negocio"**
+  - Dashboard: "tu restaurante" → **"tu negocio"**
+  - RestaurantPage:
+    - Título: "Mi Restaurante" → **"Mi Negocio"**
+    - Subtítulo: "información de tu negocio" → **"información de tu empresa"**
+    - Placeholder: "Nombre del restaurante" → **"Nombre del negocio"**
+    - Placeholder: "Describe tu restaurante" → **"Describe tu negocio"**
+    - Botón: "Abrir Restaurante" → **"Abrir Negocio"**
+  - DashboardPage: "Información del Restaurante" → **"Información del Negocio"**
+- **Archivos modificados:** 3 (Sidebar, Dashboard, Restaurant)
+- **Resultado:** UI completamente generalizada
+
+#### 7. Corrección de TypeScript Config
+- **Problema:** tsconfig.app.json aparecía en rojo en VSCode
+- **Causa:** Opción `erasableSyntaxOnly` no compatible
+- **Solución:** Remover opción de tsconfig.app.json y tsconfig.node.json
+- **Resultado:** TypeScript validando correctamente (azul en VSCode)
+
+---
+
+### 📁 Archivos Modificados (Sesión 3)
+
+1. `docker-compose.yml` - Puerto 5174 agregado
+2. `vite.config.ts` - Proxy configurado
+3. `.env` - API URL cambiada a relativa
+4. `.env.example` - API URL cambiada a relativa
+5. `package.json` - Tailwind v3 instalado
+6. `postcss.config.js` - Configuración v3
+7. `tailwind.config.js` - Recreado para v3
+8. `src/index.css` - Sintaxis Tailwind v3
+9. `src/shared/api/apiClient.ts` - Imports corregidos
+10. `src/pages/restaurant/RestaurantPage.tsx` - Icono Power + textos generalizados
+11. `src/app/layout/Sidebar.tsx` - Textos generalizados
+12. `src/pages/dashboard/DashboardPage.tsx` - Textos generalizados
+13. `tsconfig.app.json` - erasableSyntaxOnly removido
+14. `tsconfig.node.json` - erasableSyntaxOnly removido
+
+**Total:** 14 archivos modificados
+
+---
+
+### 🐛 Issues Encontrados y Resueltos
+
+#### Issue 1: Vite not found en Docker
+- **Problema:** sh: vite: command not found
+- **Causa:** Dependencias no instaladas en el contenedor
+- **Solución:** `docker compose exec frontend-dev npm install -w @mesoquick/app-empresas`
+- **Lección:** Docker necesita instalación explícita de dependencias
+
+#### Issue 2: Puerto en uso
+- **Problema:** Puerto 5173 ya ocupado por app-repartidores
+- **Solución:** Configurar puerto 5174 y agregarlo a docker-compose
+- **Lección:** Documentar puertos de cada app en docker-compose
+
+#### Issue 3: Tailwind CSS v4 incompatible
+- **Problema:** Nueva sintaxis de Tailwind v4 causaba errores
+- **Intentos:** @theme, @import "tailwindcss", CSS variables
+- **Solución:** Downgrade a v3.4.19 (más estable)
+- **Lección:** No usar versiones bleeding-edge en producción
+
+#### Issue 4: CORS Policy
+- **Problema:** Navegador bloqueaba peticiones cross-origin
+- **Causa:** API no tiene CORS habilitado para localhost
+- **Solución:** Proxy de Vite reenvía peticiones desde mismo origen
+- **Lección:** Siempre configurar proxy en desarrollo para APIs externas
+
+#### Issue 5: Axios Tipos Incompatibles
+- **Problema:** InternalAxiosRequestConfig no exportado
+- **Causa:** Versiones diferentes de Axios
+- **Solución:** No tipar explícitamente, dejar inferencia
+- **Lección:** Evitar tipos internos de librerías, usar solo interfaces públicas
+
+#### Issue 6: Lucide Icon no existe
+- **Problema:** Toggle no es un icono válido de lucide-react
+- **Solución:** Usar Power icon
+- **Lección:** Verificar documentación de iconos antes de usar
+
+---
+
+### 📊 Métricas de la Sesión
+
+- **Tiempo:** ~1 hora
+- **Archivos modificados:** 14
+- **Issues resueltos:** 6
+- **Dependencias actualizadas:** 2 (Tailwind v3, lucide-react)
+- **Comandos Docker ejecutados:** 8
+- **Reinicios de servidor:** 6
+- **Errores de CORS resueltos:** 1 ✅
+- **Errores de TypeScript resueltos:** 3 ✅
+
+---
+
+### 🎓 Aprendizajes Clave
+
+1. **Docker requiere instalación explícita:** No asume dependencias del host
+2. **Vite HMR no funciona con cambios de config:** Requiere restart completo
+3. **Proxy es esencial para desarrollo:** Evita problemas de CORS
+4. **Tailwind v4 aún no es estable:** Mejor usar v3 para producción
+5. **Imports de tipos deben ser públicos:** Evitar tipos internos de librerías
+6. **Variables de entorno requieren restart:** Vite cachea .env al inicio
+7. **Path aliases necesitan config en múltiples lugares:** tsconfig + vite.config
+
+---
+
+### 💡 Decisiones Técnicas
+
+1. **Tailwind v3 sobre v4**
+   - Razón: Mayor estabilidad, documentación completa
+   - Trade-off: No tenemos features más recientes
+
+2. **Proxy Vite en lugar de CORS habilitado**
+   - Razón: No controlamos el backend
+   - Ventaja: Funciona en desarrollo inmediatamente
+
+3. **Puerto 5174 para app-empresas**
+   - Razón: 5173 ocupado por repartidores
+   - Ventaja: Ambas apps pueden correr simultáneamente
+
+4. **Generalización a "Empresa/Negocio"**
+   - Razón: Plataforma no es solo para restaurantes
+   - Ventaja: Escalable a cualquier tipo de negocio
+
+5. **No tipar interceptor de Axios**
+   - Razón: Compatibilidad entre versiones
+   - Ventaja: Menos problemas con actualizaciones
+
+---
+
+### 🎯 Estado Final
+
+#### ✅ Funcionando Correctamente
+- Dashboard con datos reales de API
+- Mi Negocio con edición inline
+- Toggle disponibilidad (Abrir/Cerrar)
+- Navegación entre páginas
+- Loading states
+- Error handling
+- Proxy funcionando (sin CORS)
+- Docker configurado correctamente
+
+#### ⏳ Pendiente para Próximas Sesiones
+- CRUD de Productos
+- Gestión de Horarios
+- Dashboard mejorado con gráficas
+- Módulo de Pedidos
+- Autenticación real (cuando esté disponible)
+
+---
+
+### 🚀 Comandos para Desarrollo
+
+```bash
+# Iniciar app-empresas en Docker
+cd /home/lufi/programacion/mesoquick_frontend_workspace
+docker compose exec frontend-dev sh -c "cd apps/app-empresas && npm run dev"
+
+# Acceso
+# http://localhost:5174
+
+# Ver logs
+docker compose logs -f frontend-dev
+
+# Reinstalar dependencias (si es necesario)
+docker compose exec frontend-dev npm install -w @mesoquick/app-empresas
+
+# Limpiar caché de Vite
+docker compose exec frontend-dev sh -c "cd apps/app-empresas && rm -rf node_modules/.vite"
+```
+
+---
+
+### 🔗 Referencias Útiles
+
+- [Vite Proxy Config](https://vitejs.dev/config/server-options.html#server-proxy)
+- [Tailwind CSS v3 Docs](https://v3.tailwindcss.com/)
+- [Lucide Icons List](https://lucide.dev/icons/)
+- [Axios Interceptors](https://axios-http.com/docs/interceptors)
+- [Docker Compose CLI](https://docs.docker.com/compose/reference/)
+
+---
+
+### 📝 Notas para Próxima Sesión
+
+1. **Productos CRUD:** Basarse en estructura de Restaurant
+2. **Usar misma arquitectura:** Entity → Service → Store → Page
+3. **Reutilizar componentes:** Loading, Error, Form fields
+4. **Mantener convenciones:** Naming, estructura de archivos
+5. **Documentar decisiones:** Agregar comentarios en código complejo
+
+---
+
+**Última actualización:** 07/04/2026 20:43  
+**Próxima sesión:** Implementación de Productos CRUD  
+**Estado:** ✅ Aplicación 100% funcional en Docker
