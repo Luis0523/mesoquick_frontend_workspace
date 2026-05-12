@@ -5,12 +5,12 @@
 
 import { useEffect } from 'react';
 import { useRestaurantStore } from '@/features/manage-restaurant/model/useRestaurantStore';
-import { getCurrentRestaurantId } from '@/shared/mocks/mockAuth';
+import { getCommerceContext } from '@/shared/business/businessContext';
 import { Store, TrendingUp, Package, Star } from 'lucide-react';
 
 export const DashboardPage = () => {
   const { restaurant, isLoading, error, fetchRestaurant } = useRestaurantStore();
-  const restaurantId = getCurrentRestaurantId();
+  const restaurantId = getCommerceContext().id;
 
   useEffect(() => {
     fetchRestaurant(restaurantId);
@@ -96,13 +96,13 @@ export const DashboardPage = () => {
       {/* Próximamente */}
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
         <h3 className="text-lg font-semibold text-blue-900 mb-2">
-          🚀 Próximamente
+          Próximamente
         </h3>
         <ul className="text-blue-700 space-y-1 text-sm">
-          <li>• Gráficas de estadísticas</li>
-          <li>• Pedidos activos en tiempo real</li>
-          <li>• Alertas y notificaciones</li>
-          <li>• Resumen de ventas</li>
+          <li>Graficas de estadisticas</li>
+          <li>Pedidos activos en tiempo real</li>
+          <li>Alertas y notificaciones</li>
+          <li>Resumen de ventas</li>
         </ul>
       </div>
     </div>

@@ -3,6 +3,7 @@ export interface Product {
   // Auto-generados por backend
   id: number;
   restaurante_id: number;
+  business_id?: number;
   fecha_creacion: string;
   fecha_actualizacion: string | null;
   
@@ -17,6 +18,17 @@ export interface Product {
   
   // Estado
   activo: boolean;           // Disponible para venta
+  visible_in_catalog?: boolean;
+  stock?: {
+    productStockId?: number;
+    availableQuantity?: number;
+    reservedQuantity?: number;
+    minimumAlertQuantity?: number;
+    product_stock_id?: number;
+    available_quantity?: number;
+    reserved_quantity?: number;
+    minimum_alert_quantity?: number;
+  } | null;
 }
 
 // Enum de categorías
@@ -39,6 +51,13 @@ export const PRODUCT_TYPE_LABELS: Record<ProductType, string> = {
   [ProductType.PLATO_FUERTE]: 'Plato Fuerte',
 };
 
+export interface ProductCategory {
+  id: number;
+  name: string;
+  description?: string | null;
+  status?: string;
+}
+
 // DTOs para crear/actualizar
 export interface CreateProductDTO {
   tipo_producto_id: number;
@@ -46,6 +65,8 @@ export interface CreateProductDTO {
   precio: number;            // Ya debe venir en centavos
   descripcion?: string;
   imagen_url?: string;
+  visible_in_catalog?: boolean;
+  internal_code?: string;
 }
 
 export type UpdateProductDTO = Partial<CreateProductDTO>;

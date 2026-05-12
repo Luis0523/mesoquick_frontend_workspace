@@ -1,20 +1,22 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Edit, Trash2, Power } from 'lucide-react';
+import { Plus, Edit, Trash2, Power, PackageSearch } from 'lucide-react';
 import { useProductsStore } from '@/features/manage-products/model/useProductsStore';
 import { formatProductPrice, PRODUCT_TYPE_LABELS, ProductType } from '@/entities/product/model/types';
-import { getCurrentRestaurantId } from '@/shared/mocks/mockAuth';
+import { getCommerceContext, isBusinessCommerce } from '@/shared/business/businessContext';
 
 export const ProductsListPage = () => {
   const navigate = useNavigate();
-  const restaurantId = getCurrentRestaurantId();
+  const commerce = getCommerceContext();
+  const restaurantId = commerce.id;
+  const usesBusinessBackend = isBusinessCommerce();
   
   const { products, isLoading, error, fetchProducts, deleteProduct, toggleActive } = 
     useProductsStore();
 
   useEffect(() => {
     fetchProducts(restaurantId, true); // Solo productos activos
-  }, []);
+  }, [fetchProducts, restaurantId]);
 
   const handleDelete = async (productId: number) => {
     if (confirm('¿Eliminar este producto?')) {
@@ -92,7 +94,7 @@ export const ProductsListPage = () => {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <span className="text-gray-400 text-4xl">🍽️</span>
+                  <PackageSearch className="text-gray-400" size={44} />
                 )}
               </div>
 
@@ -102,7 +104,7 @@ export const ProductsListPage = () => {
                   {product.nombre}
                 </h3>
                 <p className="text-sm text-gray-500 mb-2">
-                  {PRODUCT_TYPE_LABELS[product.tipo_producto_id as ProductType]}
+                  {PRODUCT_TYPE_LABELS[product.tipo_producto_id as ProductType] || `Categoria ${product.tipo_producto_id}`}
                 </p>
                 {product.descripcion && (
                   <p className="text-sm text-gray-600 mb-3 line-clamp-2">
@@ -112,6 +114,12 @@ export const ProductsListPage = () => {
                 <p className="text-xl font-bold text-green-base mb-4">
                   {formatProductPrice(product.precio)}
                 </p>
+
+                {usesBusinessBackend && product.stock && (
+                  <p className="text-sm text-gray-600 mb-3">
+                    Stock: {product.stock.availableQuantity ?? product.stock.available_quantity ?? 0} disponible / {product.stock.reservedQuantity ?? product.stock.reserved_quantity ?? 0} reservado
+                  </p>
+                )}
 
                 {/* Estado */}
                 <div className="flex items-center justify-between mb-4">

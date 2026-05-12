@@ -4,15 +4,16 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Save } from 'lucide-react';
 import { useProductsStore } from '@/features/manage-products/model/useProductsStore';
 import { ProductType, PRODUCT_TYPE_LABELS, toCents, fromCents } from '@/entities/product/model/types';
-import { getCurrentRestaurantId } from '@/shared/mocks/mockAuth';
+import { getCommerceContext, isBusinessCommerce } from '@/shared/business/businessContext';
 
 export const EditProductPage = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const productId = parseInt(id!);
-  const restaurantId = getCurrentRestaurantId();
+  const restaurantId = getCommerceContext().id;
+  const usesBusinessBackend = isBusinessCommerce();
   
-  const { currentProduct, isLoading, fetchProductById, updateProduct } = useProductsStore();
+  const { categories, currentProduct, isLoading, fetchCategories, fetchProductById, updateProduct } = useProductsStore();
 
   const [formData, setFormData] = useState({
     nombre: '',
@@ -27,7 +28,8 @@ export const EditProductPage = () => {
   // Cargar producto al montar
   useEffect(() => {
     fetchProductById(restaurantId, productId);
-  }, [productId]);
+    fetchCategories(restaurantId);
+  }, [fetchCategories, fetchProductById, productId, restaurantId]);
 
   // Pre-llenar formulario cuando cargue el producto
   useEffect(() => {
@@ -116,7 +118,7 @@ export const EditProductPage = () => {
             className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent ${
               errors.nombre ? 'border-red-500' : 'border-gray-300'
             }`}
-            placeholder="Ej: Hamburguesa Especial"
+            placeholder="Ej: Producto destacado"
           />
           {errors.nombre && <p className="text-red-500 text-sm mt-1">{errors.nombre}</p>}
         </div>
@@ -133,9 +135,9 @@ export const EditProductPage = () => {
             }
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
           >
-            {Object.entries(PRODUCT_TYPE_LABELS).map(([key, label]) => (
-              <option key={key} value={key}>
-                {label}
+            {(usesBusinessBackend ? categories : Object.entries(PRODUCT_TYPE_LABELS).map(([id, name]) => ({ id: Number(id), name }))).map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
               </option>
             ))}
           </select>

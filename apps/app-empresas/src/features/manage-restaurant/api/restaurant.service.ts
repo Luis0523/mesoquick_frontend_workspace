@@ -4,6 +4,8 @@
  */
 
 import { apiClient, handleApiError } from '@/shared/api/apiClient';
+import { businessApiClient } from '@/shared/api/businessApiClient';
+import { getCommerceContext, isBusinessCommerce } from '@/shared/business/businessContext';
 import type {
   Restaurant,
   CreateRestaurantDTO,
@@ -13,6 +15,49 @@ import type {
 } from '@/entities/restaurant/model/types';
 
 const BASE_PATH = '/restaurantes';
+
+type BusinessResponse = {
+  businessId: number;
+  tradeName: string;
+  legalName?: string;
+  businessType?: string;
+  businessStatus?: string;
+  description?: string | null;
+  address: string;
+  phone: string;
+  email?: string | null;
+  logoUrl?: string | null;
+  availability?: { isAvailable?: boolean };
+  createdAt?: string;
+  updatedAt?: string;
+};
+
+const normalizeBusiness = (business: BusinessResponse): Restaurant => ({
+  id: business.businessId,
+  businessId: business.businessId,
+  fecha_creacion: business.createdAt || '',
+  fecha_actualizacion: business.updatedAt || null,
+  nombre: business.tradeName,
+  legalName: business.legalName,
+  businessType: business.businessType,
+  direccion: business.address,
+  telefono: business.phone,
+  descripcion: business.description || null,
+  correo: business.email || null,
+  logo_url: business.logoUrl || null,
+  disponible: Boolean(business.availability?.isAvailable ?? business.businessStatus === 'active'),
+  activo: !['inactive', 'retired', 'suspended'].includes(business.businessStatus || ''),
+  businessStatus: business.businessStatus,
+});
+
+const toBusinessUpdateDTO = (dto: UpdateRestaurantDTO) => ({
+  tradeName: dto.nombre,
+  description: dto.descripcion,
+  address: dto.direccion,
+  phone: dto.telefono,
+  email: dto.correo,
+  logoUrl: dto.logo_url,
+});
 
 // Tipos de respuesta de la API
 interface ApiResponse<T> {
@@ -32,6 +77,11 @@ export const restaurantService = {
    */
   getAll: async (params?: RestaurantQueryParams): Promise<Restaurant[]> => {
     try {
+      if (isBusinessCommerce()) {
+        const { data } = await businessApiClient.get<BusinessResponse[]>('/businesses', { params });
+        return data.map(normalizeBusiness);
+      }
+
       const { data: response } = await apiClient.get<ApiResponse<Restaurant[]>>(BASE_PATH, { params });
       return response.data;
     } catch (error) {
@@ -46,6 +96,12 @@ export const restaurantService = {
    */
   getById: async (id: number): Promise<Restaurant> => {
     try {
+      if (isBusinessCommerce()) {
+        const context = getCommerceContext();
+        const { data } = await businessApiClient.get<BusinessResponse>(`/businesses/${id || context.id}`);
+        return normalizeBusiness(data);
+      }
+
       const { data: response } = await apiClient.get<ApiResponse<Restaurant>>(`${BASE_PATH}/${id}`);
       return response.data;
     } catch (error) {
@@ -74,6 +130,11 @@ export const restaurantService = {
    */
   update: async (id: number, dto: UpdateRestaurantDTO): Promise<Restaurant> => {
     try {
+      if (isBusinessCommerce()) {
+        const { data } = await businessApiClient.patch<BusinessResponse>(`/businesses/${id}`, toBusinessUpdateDTO(dto));
+        return normalizeBusiness(data);
+      }
+
       const { data: response } = await apiClient.put<ApiResponse<Restaurant>>(`${BASE_PATH}/${id}`, dto);
       return response.data;
     } catch (error) {
@@ -101,6 +162,14 @@ export const restaurantService = {
    */
   toggleAvailability: async (id: number, disponible: boolean): Promise<Restaurant> => {
     try {
+      if (isBusinessCommerce()) {
+        const { data } = await businessApiClient.patch<BusinessResponse>(`/businesses/${id}/availability`, {
+          businessStatus: disponible ? 'active' : 'temporarily_closed',
+          clearActiveTemporaryClosures: true,
+        });
+        return normalizeBusiness(data);
+      }
+
       const dto: ToggleAvailabilityDTO = { disponible };
       const { data: response } = await apiClient.patch<ApiResponse<Restaurant>>(
         `${BASE_PATH}/${id}/disponibilidad`,

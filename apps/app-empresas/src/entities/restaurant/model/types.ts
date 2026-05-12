@@ -6,11 +6,14 @@
 export interface Restaurant {
   // Auto-generados por backend
   id: number;
+  businessId?: number;
   fecha_creacion: string;        // ISO 8601 timestamp
   fecha_actualizacion: string | null;   // ISO 8601 timestamp
   
   // Campos obligatorios
   nombre: string;
+  legalName?: string;
+  businessType?: string;
   direccion: string;
   telefono: string;
   
@@ -22,6 +25,7 @@ export interface Restaurant {
   // Estados
   disponible: boolean;  // Toggle operacional (acepta pedidos ahora)
   activo: boolean;      // Soft delete (existe en BD)
+  businessStatus?: string;
   
   // Relaciones (opcional en la respuesta)
   horarios?: unknown[]; // TODO: Tipar cuando se implemente Schedule

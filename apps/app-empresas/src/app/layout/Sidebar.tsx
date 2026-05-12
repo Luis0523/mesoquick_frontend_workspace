@@ -7,16 +7,21 @@ import { NavLink } from 'react-router-dom';
 import { 
   LayoutDashboard, 
   Store, 
-  Pizza, 
+  ShoppingBag, 
   Clock, 
   Package, 
+  Boxes,
   User, 
   LogOut 
 } from 'lucide-react';
 import { useRestaurantStore } from '@/features/manage-restaurant/model/useRestaurantStore';
+import { useAuthStore } from '@/features/auth/model/useAuthStore';
+import { getCommerceContext } from '@/shared/business/businessContext';
 
 export const Sidebar = () => {
   const restaurant = useRestaurantStore((state) => state.restaurant);
+  const { user, logout } = useAuthStore();
+  const commerce = getCommerceContext();
 
   const navItems = [
     { 
@@ -31,8 +36,13 @@ export const Sidebar = () => {
     },
     { 
       label: 'Productos', 
-      icon: Pizza, 
+      icon: ShoppingBag, 
       path: '/products'
+    },
+    { 
+      label: 'Inventario', 
+      icon: Boxes, 
+      path: '/inventory'
     },
     { 
       label: 'Horarios', 
@@ -61,7 +71,7 @@ export const Sidebar = () => {
       <div className="p-6 border-b border-gray-200">
         <h1 className="text-xl font-bold text-primary">MesoQuick</h1>
         <p className="text-sm text-gray-600 mt-1 truncate">
-          {restaurant?.nombre || 'Cargando...'}
+          {restaurant?.nombre || commerce.name || user?.restaurantes?.[0]?.nombre || user?.email || 'Cargando...'}
         </p>
       </div>
 
@@ -126,11 +136,10 @@ export const Sidebar = () => {
           );
         })}
 
-        {/* Logout (futuro) */}
         <button
-          className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 cursor-not-allowed w-full text-left"
-          title="Próximamente"
-          disabled
+          className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 w-full text-left transition-colors"
+          onClick={logout}
+          type="button"
         >
           <LogOut size={20} />
           <span className="text-sm font-medium">Cerrar Sesión</span>

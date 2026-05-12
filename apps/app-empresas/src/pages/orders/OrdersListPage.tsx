@@ -6,21 +6,39 @@ import { OrderStatus, ORDER_STATUS_LABELS, ORDER_STATUS_COLORS } from '@/entitie
 import { formatPrice } from '@/shared/utils/currency';
 import { formatDateTime } from '@/shared/utils/date';
 import { getCurrentRestaurantId } from '@/shared/mocks/mockAuth';
+import { isBusinessCommerce } from '@/shared/business/businessContext';
 
 export const OrdersListPage = () => {
   const navigate = useNavigate();
+  const usesBusinessBackend = isBusinessCommerce();
   const restaurantId = getCurrentRestaurantId();
   const { orders, isLoading, error, fetchActiveOrders } = useOrdersStore();
   
   const [filterStatus, setFilterStatus] = useState<OrderStatus | 'ALL'>('ALL');
 
   useEffect(() => {
+    if (usesBusinessBackend) return;
+
     // Intentar cargar pedidos activos
     // Si falla (404), mostrar mensaje que API no está lista
     fetchActiveOrders(restaurantId).catch(() => {
       console.log('API de pedidos aún no disponible');
     });
-  }, []);
+  }, [fetchActiveOrders, restaurantId, usesBusinessBackend]);
+
+  if (usesBusinessBackend) {
+    return (
+      <div className="p-6">
+        <div className="bg-white rounded-lg shadow p-8 text-center">
+          <Package size={56} className="mx-auto text-gray-400 mb-4" />
+          <h1 className="text-3xl font-semibold text-primary mb-2">Recepción de pedidos</h1>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Este espacio queda preparado para recibir pedidos de negocios generales. El backend probado expone reserva, confirmación y liberación de stock por endpoints internos; cuando el módulo de pedidos publique el listado operativo, esta pantalla debe consumirlo aquí.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   const filteredOrders = filterStatus === 'ALL' 
     ? orders 

@@ -1,16 +1,23 @@
 import { create } from 'zustand';
 import { productsService } from '../api/products.service';
-import type { Product, CreateProductDTO, UpdateProductDTO } from '@/entities/product/model/types';
+import type { Product, CreateProductDTO, ProductCategory, UpdateProductDTO } from '@/entities/product/model/types';
 
 interface ProductsStore {
   // Estado
   products: Product[];
+  categories: ProductCategory[];
+  inventory: unknown[];
   currentProduct: Product | null;
   isLoading: boolean;
   error: string | null;
   
   // Acciones
   fetchProducts: (restaurantId: number, activo?: boolean) => Promise<void>;
+  fetchCategories: (restaurantId: number) => Promise<void>;
+  createCategory: (restaurantId: number, name: string) => Promise<ProductCategory>;
+  fetchInventory: (restaurantId: number) => Promise<void>;
+  createInventory: (restaurantId: number, dto: { producto_id: number; cantidad_disponible: number; cantidad_minima: number; unidad_medida: string }) => Promise<void>;
+  registerInventoryMovement: (restaurantId: number, inventoryId: number, dto: { tipo_movimiento: string; cantidad: number; usuario_responsable: string }) => Promise<void>;
   fetchProductById: (restaurantId: number, productId: number) => Promise<void>;
   createProduct: (restaurantId: number, dto: CreateProductDTO) => Promise<Product>;
   updateProduct: (restaurantId: number, productId: number, dto: UpdateProductDTO) => Promise<Product>;
@@ -23,6 +30,8 @@ interface ProductsStore {
 export const useProductsStore = create<ProductsStore>((set) => ({
   // Estado inicial
   products: [],
+  categories: [],
+  inventory: [],
   currentProduct: null,
   isLoading: false,
   error: null,
@@ -52,6 +61,63 @@ export const useProductsStore = create<ProductsStore>((set) => ({
         error: error instanceof Error ? error.message : 'Error al cargar producto',
         isLoading: false,
       });
+    }
+  },
+
+  fetchCategories: async (restaurantId: number) => {
+    try {
+      const categories = await productsService.getCategories(restaurantId);
+      set({ categories });
+    } catch (error) {
+      set({ error: error instanceof Error ? error.message : 'Error al cargar categorias' });
+    }
+  },
+
+  createCategory: async (restaurantId: number, name: string) => {
+    try {
+      const category = await productsService.createCategory(restaurantId, name);
+      set((state) => ({ categories: [...state.categories, category] }));
+      return category;
+    } catch (error) {
+      set({ error: error instanceof Error ? error.message : 'Error al crear categoria' });
+      throw error;
+    }
+  },
+
+  fetchInventory: async (restaurantId: number) => {
+    set({ isLoading: true, error: null });
+    try {
+      const inventory = await productsService.getInventory(restaurantId);
+      set({ inventory: Array.isArray(inventory) ? inventory : [], isLoading: false });
+    } catch (error) {
+      set({
+        error: error instanceof Error ? error.message : 'Error al cargar inventario',
+        isLoading: false,
+      });
+    }
+  },
+
+  createInventory: async (restaurantId, dto) => {
+    set({ isLoading: true, error: null });
+    try {
+      await productsService.createInventory(restaurantId, dto);
+      const inventory = await productsService.getInventory(restaurantId);
+      set({ inventory: Array.isArray(inventory) ? inventory : [], isLoading: false });
+    } catch (error) {
+      set({ error: error instanceof Error ? error.message : 'Error al crear inventario', isLoading: false });
+      throw error;
+    }
+  },
+
+  registerInventoryMovement: async (restaurantId, inventoryId, dto) => {
+    set({ isLoading: true, error: null });
+    try {
+      await productsService.registerInventoryMovement(restaurantId, inventoryId, dto);
+      const inventory = await productsService.getInventory(restaurantId);
+      set({ inventory: Array.isArray(inventory) ? inventory : [], isLoading: false });
+    } catch (error) {
+      set({ error: error instanceof Error ? error.message : 'Error al registrar movimiento', isLoading: false });
+      throw error;
     }
   },
 
@@ -140,6 +206,8 @@ export const useProductsStore = create<ProductsStore>((set) => ({
   // Reset store
   reset: () => set({
     products: [],
+    categories: [],
+    inventory: [],
     currentProduct: null,
     isLoading: false,
     error: null,

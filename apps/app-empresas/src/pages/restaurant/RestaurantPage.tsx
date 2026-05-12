@@ -5,7 +5,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRestaurantStore } from '@/features/manage-restaurant/model/useRestaurantStore';
-import { getCurrentRestaurantId } from '@/shared/mocks/mockAuth';
+import { getCommerceContext } from '@/shared/business/businessContext';
 import { Edit2, Save, X, Power } from 'lucide-react';
 import type { UpdateRestaurantDTO } from '@/entities/restaurant/model/types';
 
@@ -19,7 +19,7 @@ export const RestaurantPage = () => {
     toggleAvailability 
   } = useRestaurantStore();
   
-  const restaurantId = getCurrentRestaurantId();
+  const restaurantId = getCommerceContext().id;
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState<UpdateRestaurantDTO>({});
 
@@ -149,7 +149,7 @@ export const RestaurantPage = () => {
           <div>
             <p className="text-gray-600">Disponibilidad actual</p>
             <p className={`text-lg font-semibold mt-1 ${restaurant.disponible ? 'text-green-600' : 'text-red-600'}`}>
-              {restaurant.disponible ? '🟢 Disponible' : '🔴 Cerrado'}
+              {restaurant.disponible ? 'Disponible' : 'Cerrado'}
             </p>
           </div>
           <button
@@ -208,7 +208,7 @@ export const RestaurantPage = () => {
               label="Correo"
               value={formData.correo || ''}
               onChange={(value) => setFormData({ ...formData, correo: value })}
-              placeholder="contacto@restaurante.com"
+              placeholder="contacto@negocio.com"
               type="email"
             />
             <TextAreaField

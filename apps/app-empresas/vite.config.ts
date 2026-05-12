@@ -19,10 +19,16 @@ export default defineConfig({
     proxy: {
       // Proxy para evitar CORS
       '/api': {
-        target: 'https://restaurantes.fly.dev',
+        target: 'https://broker-services-production.up.railway.app',
         changeOrigin: true,
         secure: true,
         rewrite: (path) => path.replace(/^\/api/, '/api'),
+      },
+      '/business-api': {
+        target: 'https://proyectoarqui.onrender.com',
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/business-api/, '/api'),
       },
     },
   },

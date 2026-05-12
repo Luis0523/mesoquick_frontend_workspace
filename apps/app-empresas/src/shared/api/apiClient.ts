@@ -13,6 +13,7 @@
 import axios, { AxiosError } from 'axios';
 import { API_CONFIG } from '../config/api.config';
 import { ENV } from '../config/env.config';
+import { getAuthToken } from '@/features/auth/model/useAuthStore';
 
 // Crear instancia de axios
 export const apiClient = axios.create(API_CONFIG);
@@ -25,11 +26,10 @@ apiClient.interceptors.request.use(
       console.log(`🚀 ${config.method?.toUpperCase()} ${config.url}`, config.data);
     }
 
-    // TODO: Agregar token de autenticación cuando esté disponible
-    // const token = localStorage.getItem('auth_token');
-    // if (token && config.headers) {
-    //   config.headers.Authorization = `Bearer ${token}`;
-    // }
+    const token = getAuthToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
 
     return config;
   },
@@ -56,8 +56,11 @@ apiClient.interceptors.response.use(
       switch (status) {
         case 401:
           console.error('🔒 No autorizado - Redirigir a login');
-          // TODO: Redirigir a login cuando esté disponible
-          // window.location.href = '/login';
+          localStorage.removeItem('auth_token');
+          localStorage.removeItem('auth_user');
+          if (window.location.pathname !== '/login') {
+            window.location.href = '/login';
+          }
           break;
         
         case 403:

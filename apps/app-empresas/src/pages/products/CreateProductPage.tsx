@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Save } from 'lucide-react';
 import { useProductsStore } from '@/features/manage-products/model/useProductsStore';
 import { ProductType, PRODUCT_TYPE_LABELS, toCents } from '@/entities/product/model/types';
-import { getCurrentRestaurantId } from '@/shared/mocks/mockAuth';
+import { getCommerceContext, isBusinessCommerce } from '@/shared/business/businessContext';
 
 export const CreateProductPage = () => {
   const navigate = useNavigate();
-  const restaurantId = getCurrentRestaurantId();
-  const { createProduct, isLoading } = useProductsStore();
+  const restaurantId = getCommerceContext().id;
+  const usesBusinessBackend = isBusinessCommerce();
+  const { categories, createProduct, createCategory, fetchCategories, isLoading } = useProductsStore();
 
   const [formData, setFormData] = useState({
     nombre: '',
@@ -17,9 +18,15 @@ export const CreateProductPage = () => {
     descripcion: '',
     precio: '', // String para input, se convierte después
     imagen_url: '',
+    internal_code: '',
+    new_category: '',
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    fetchCategories(restaurantId);
+  }, [fetchCategories, restaurantId]);
 
   const validate = (): boolean => {
     const newErrors: Record<string, string> = {};
@@ -44,12 +51,20 @@ export const CreateProductPage = () => {
     try {
       const precioEnCentavos = toCents(parseFloat(formData.precio));
 
+      let categoryId = formData.tipo_producto_id;
+      if (usesBusinessBackend && formData.new_category.trim()) {
+        const category = await createCategory(restaurantId, formData.new_category.trim());
+        categoryId = category.id;
+      }
+
       await createProduct(restaurantId, {
         nombre: formData.nombre,
-        tipo_producto_id: formData.tipo_producto_id,
+        tipo_producto_id: categoryId,
         descripcion: formData.descripcion || undefined,
         precio: precioEnCentavos,
         imagen_url: formData.imagen_url || undefined,
+        internal_code: formData.internal_code || undefined,
+        visible_in_catalog: true,
       });
 
       navigate('/products');
@@ -87,7 +102,7 @@ export const CreateProductPage = () => {
             className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent ${
               errors.nombre ? 'border-red-500' : 'border-gray-300'
             }`}
-            placeholder="Ej: Hamburguesa Especial"
+            placeholder="Ej: Producto destacado"
           />
           {errors.nombre && <p className="text-red-500 text-sm mt-1">{errors.nombre}</p>}
         </div>
@@ -104,13 +119,37 @@ export const CreateProductPage = () => {
             }
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
           >
-            {Object.entries(PRODUCT_TYPE_LABELS).map(([key, label]) => (
-              <option key={key} value={key}>
-                {label}
+            {(usesBusinessBackend ? categories : Object.entries(PRODUCT_TYPE_LABELS).map(([id, name]) => ({ id: Number(id), name }))).map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
               </option>
             ))}
           </select>
+          {usesBusinessBackend && (
+            <input
+              type="text"
+              value={formData.new_category}
+              onChange={(e) => setFormData({ ...formData, new_category: e.target.value })}
+              className="mt-3 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="O escribe una categoria nueva"
+            />
+          )}
         </div>
+
+        {usesBusinessBackend && (
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Código interno
+            </label>
+            <input
+              type="text"
+              value={formData.internal_code}
+              onChange={(e) => setFormData({ ...formData, internal_code: e.target.value })}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="SKU-001"
+            />
+          </div>
+        )}
 
         {/* Descripción */}
         <div>
