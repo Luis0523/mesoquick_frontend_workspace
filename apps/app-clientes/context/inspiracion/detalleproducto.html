@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#404944",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f3f0ea",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-tertiary-container": "#1ac15b",
+                    "primary": "#002e21",
+                    "primary-container": "#0c4635",
+                    "on-primary-container": "#7eb39d",
+                    "secondary": "#9d4300",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#002f10",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-container": "#f0eee8",
+                    "inverse-primary": "#9bd2bb",
+                    "on-surface": "#1c1c18",
+                    "primary-fixed-dim": "#9bd2bb",
+                    "surface-container-highest": "#e5e2dc",
+                    "background": "#fcf9f3",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#FFFFFF",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "on-secondary-fixed-variant": "#783200",
+                    "outline-variant": "#c0c9c3",
+                    "on-secondary-fixed": "#341100",
+                    "secondary-container": "#fd761a",
+                    "on-secondary-container": "#5c2400",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#19503e",
+                    "surface-container-low": "#f6f3ed",
+                    "text-primary": "#1F2937",
+                    "outline": "#707974",
+                    "surface-container-high": "#ebe8e2",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-background": "#1c1c18",
+                    "border-subtle": "#D9E5DF",
+                    "surface-dim": "#dcdad4",
+                    "surface-tint": "#346855",
+                    "secondary-fixed": "#ffdbca",
+                    "secondary-fixed-dim": "#ffb690",
+                    "inverse-surface": "#31312d",
+                    "tertiary-container": "#00481c",
+                    "primary-fixed": "#b7eed6",
+                    "surface-variant": "#e5e2dc",
+                    "on-primary-fixed": "#002117",
+                    "text-secondary": "#6B7280",
+                    "surface-bright": "#fcf9f3",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "2.5rem",
+                    "margin-mobile": "1rem",
+                    "section-gap": "2rem",
+                    "stack-md": "1rem",
+                    "gutter": "1rem",
+                    "stack-sm": "0.5rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "label-sm": ["Inter"],
+                    "headline-xl-mobile": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-md": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                    "headline-xl-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md-mobile": ["18px", {"lineHeight": "24px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #fcf9f3; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-background selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Header / TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-mobile py-2 sticky top-0 z-50 bg-surface shadow-sm transition-all duration-200">
+<button aria-label="Volver" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex-1 flex flex-col items-center">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Calle Principal 123</span>
+</div>
+<button aria-label="Carrito" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</header>
+<main class="pb-32">
+<!-- Hero Product Image -->
+<section class="relative w-full aspect-[4/3] md:aspect-video overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A high-resolution, overhead shot of a gourmet artisan burger served on a warm wooden board, featuring melted cheddar cheese, fresh arugula, and caramelized onions. The lighting is soft and natural, emphasizing the rich textures and appetizing colors of the food. The scene is set in a modern, brightly lit restaurant with a minimalist light-mode aesthetic, using a warm cream and deep forest green color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfFQTe8GtvSY36CNZ2bS8bDHO00DZ4NCqq0zIXKXQ4bHCxhx7JRWj4aYMDFZH-B0fxaa5lfhxGLLN4sdRCq6ORk10yzoMYUxr7g1e7JYZxF0R0FQTI3NBwup1nmOYkGBKPW029fba9kpkjASOgqqZ9ygI7KBqPErPa2sYUn1KTm7GAM63Bsqa-ZWwCd_swbKlf3CKsY7SxjNniDft_qVs4y_gj6y9JQo2e-EL0QvK9Sdi3VLUA2z29s2RtTrUD3Arc0vvBejp-T4E"/>
+<div class="absolute top-4 right-4">
+<button class="bg-surface/80 backdrop-blur-md p-2 rounded-full shadow-md text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+</section>
+<!-- Product Information Canvas -->
+<article class="px-margin-mobile -mt-6 relative z-10 bg-surface rounded-t-2xl pt-6">
+<div class="flex justify-between items-start mb-2">
+<h1 class="font-headline-xl-mobile text-headline-xl-mobile text-primary">Hamburguesa de la Casa</h1>
+<span class="font-headline-md text-headline-md text-secondary">$12.50</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-gutter leading-relaxed">
+                Nuestra hamburguesa insignia preparada con 200g de carne de res premium, queso cheddar madurado, cebollas caramelizadas al vino tinto, arúgula fresca y nuestra salsa secreta en pan brioche artesanal.
+            </p>
+<div class="flex items-center gap-4 mb-section-gap">
+<div class="flex items-center bg-surface-container-low px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-tertiary-container mr-1 text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-lg text-label-lg text-on-surface">4.8 (120+)</span>
+</div>
+<div class="flex items-center bg-surface-container-low px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-on-surface-variant mr-1 text-[18px]" data-icon="schedule">schedule</span>
+<span class="font-label-lg text-label-lg text-on-surface">20-30 min</span>
+</div>
+</div>
+<!-- Customization Options -->
+<section class="space-y-section-gap">
+<!-- Selectable Option Group -->
+<div class="space-y-stack-md">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md-mobile text-primary">Elige el término de la carne</h3>
+<span class="text-label-sm font-label-sm bg-primary-container text-on-primary-container px-2 py-0.5 rounded-full">Obligatorio</span>
+</div>
+<div class="space-y-2">
+<label class="flex items-center justify-between p-4 bg-surface border border-border-subtle rounded-xl cursor-pointer hover:bg-surface-container-lowest transition-colors">
+<span class="font-body-md text-body-md">Término Medio</span>
+<input checked="" class="w-5 h-5 text-primary focus:ring-primary border-outline" name="cooking" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-4 bg-surface border border-border-subtle rounded-xl cursor-pointer hover:bg-surface-container-lowest transition-colors">
+<span class="font-body-md text-body-md">Tres Cuartos</span>
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline" name="cooking" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-4 bg-surface border border-border-subtle rounded-xl cursor-pointer hover:bg-surface-container-lowest transition-colors">
+<span class="font-body-md text-body-md">Bien Cocida</span>
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline" name="cooking" type="radio"/>
+</label>
+</div>
+</div>
+<!-- Extras Group -->
+<div class="space-y-stack-md">
+<h3 class="font-headline-md text-headline-md-mobile text-primary">Agrega extras</h3>
+<div class="space-y-2">
+<label class="flex items-center justify-between p-4 bg-surface border border-border-subtle rounded-xl cursor-pointer hover:bg-surface-container-lowest transition-colors">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md">Tocino Ahumado</span>
+<span class="font-label-sm text-label-sm text-secondary">+$1.50</span>
+</div>
+<input class="w-5 h-5 rounded text-primary focus:ring-primary border-outline" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-4 bg-surface border border-border-subtle rounded-xl cursor-pointer hover:bg-surface-container-lowest transition-colors">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md">Huevo Frito</span>
+<span class="font-label-sm text-label-sm text-secondary">+$1.00</span>
+</div>
+<input class="w-5 h-5 rounded text-primary focus:ring-primary border-outline" type="checkbox"/>
+</label>
+</div>
+</div>
+<!-- Quantity and Instructions -->
+<div class="space-y-stack-md">
+<h3 class="font-headline-md text-headline-md-mobile text-primary">Instrucciones Especiales</h3>
+<div class="relative">
+<textarea class="w-full h-32 p-4 bg-surface-container-lowest border border-border-subtle rounded-2xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50 text-body-md font-body-md" placeholder="Ej. Sin cebolla, aderezo aparte..."></textarea>
+</div>
+</div>
+<!-- Quantity Selector (Inline for Mobile) -->
+<div class="flex items-center justify-center gap-8 py-gutter">
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-high text-primary hover:bg-surface-container-highest active:scale-90 transition-all">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<span class="font-headline-lg text-headline-lg text-on-surface">1</span>
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-primary text-on-primary hover:bg-primary-container active:scale-90 transition-all shadow-md">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</section>
+</article>
+</main>
+<!-- Fixed Footer Action Bar -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface shadow-[0_-4px_24px_rgba(0,0,0,0.06)] px-margin-mobile pt-4 pb-8 z-50">
+<div class="max-w-screen-xl mx-auto flex gap-4">
+<button class="flex-1 bg-primary text-on-primary py-4 px-6 rounded-2xl flex justify-between items-center hover:bg-primary-container transition-all active:scale-[0.98] shadow-lg">
+<span class="font-label-lg text-label-lg uppercase tracking-wider">Agregar al carrito</span>
+<span class="font-headline-md text-headline-md">$12.50</span>
+</button>
+</div>
+</footer>
+<!-- No BottomNavBar on focus/detail screens per 'Shell Visibility & Relevance' mandate -->
+</body></html>

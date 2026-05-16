@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#404944",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f3f0ea",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-tertiary-container": "#1ac15b",
+                    "primary": "#002e21",
+                    "primary-container": "#0c4635",
+                    "on-primary-container": "#7eb39d",
+                    "secondary": "#9d4300",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#002f10",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-container": "#f0eee8",
+                    "inverse-primary": "#9bd2bb",
+                    "on-surface": "#1c1c18",
+                    "primary-fixed-dim": "#9bd2bb",
+                    "surface-container-highest": "#e5e2dc",
+                    "background": "#fcf9f3",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#FFFFFF",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "on-secondary-fixed-variant": "#783200",
+                    "outline-variant": "#c0c9c3",
+                    "on-secondary-fixed": "#341100",
+                    "secondary-container": "#fd761a",
+                    "on-secondary-container": "#5c2400",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#19503e",
+                    "surface-container-low": "#f6f3ed",
+                    "text-primary": "#1F2937",
+                    "outline": "#707974",
+                    "surface-container-high": "#ebe8e2",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-background": "#1c1c18",
+                    "border-subtle": "#D9E5DF",
+                    "surface-dim": "#dcdad4",
+                    "surface-tint": "#346855",
+                    "secondary-fixed": "#ffdbca",
+                    "secondary-fixed-dim": "#ffb690",
+                    "inverse-surface": "#31312d",
+                    "tertiary-container": "#00481c",
+                    "primary-fixed": "#b7eed6",
+                    "surface-variant": "#e5e2dc",
+                    "on-primary-fixed": "#002117",
+                    "text-secondary": "#6B7280",
+                    "surface-bright": "#fcf9f3",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "2.5rem",
+                    "margin-mobile": "1rem",
+                    "section-gap": "2rem",
+                    "stack-md": "1rem",
+                    "gutter": "1rem",
+                    "stack-sm": "0.5rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "label-sm": ["Inter"],
+                    "headline-xl-mobile": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-md": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                    "headline-xl-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .splash-gradient {
+            background: radial-gradient(circle at top right, rgba(12, 70, 53, 0.8) 0%, #0c4635 60%);
+        }
+        .organic-shape {
+            border-radius: 60% 40% 70% 30% / 30% 60% 40% 70%;
+        }
+    </style>
+</head>
+<body class="bg-primary-container text-on-primary antialiased font-body-md overflow-hidden h-screen flex flex-col">
+<!-- Splash Content Canvas -->
+<main class="flex-1 splash-gradient relative overflow-hidden flex flex-col items-center justify-between py-12 px-margin-mobile text-center">
+<!-- Top Logo Branding -->
+<div class="z-10 animate-fade-in">
+<img alt="MesoFood Logo" class="h-24 w-auto object-contain mb-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfrCdOx_GyHJ1slQXXA7yfL6Z48sw2EH51Lu6Nx1oSMWR2SYTmhnkxwr3MAWMMQbqYQhKUnlnb2QH8icflhhiWHvtOoAmJZhXAtQ3cSSYH8HgzObGsLvI32_2g0Sy_zvban5_H5H4nQAf3lsU_FnvS9bYAY5V3K9o4HgTjZy9L7kGToV07KN74pYFHG5oPsCYHnXJ7_EJ8L6qJp28is3fZ12YddB9NimqXp4V6yKJ72zxLSUYpfzSEpULRSgVxwU6w0Fu2XyegRFs"/>
+</div>
+<!-- Center Illustration Section (Bento Inspired Asymmetric Layout) -->
+<div class="relative w-full max-w-md flex flex-col items-center justify-center gap-stack-md z-10">
+<!-- Hero Illustration Container -->
+<div class="relative w-full aspect-square flex items-center justify-center">
+<!-- Decorative Abstract Shapes for Warmth -->
+<div class="absolute inset-0 organic-shape bg-on-primary-container/10 scale-110 blur-xl"></div>
+<div class="absolute top-4 left-4 w-20 h-20 organic-shape bg-secondary/20 blur-lg"></div>
+<!-- Main Food Illustration -->
+<div class="relative w-72 h-72 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
+<img class="w-full h-full object-cover" data-alt="A lush and vibrant overhead view of fresh local food including artisanal bread, roasted vegetables, and farm-fresh greens. The lighting is warm and golden, creating a professional and appetizing food photography style. The colors are rich and organic, dominated by deep greens and earthy oranges to match the brand identity. The composition is clean and modern, set against a warm cream background that feels reliable and fresh." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQqS8Xqt4y8xteNxam-TKqcqf280Hfr6rB_JIc7sXB70twzQ76cw6vXq-eqFv43-aH_rguYSrJvyFOd4-lhgitq-P-09tbJRuG_KLPbHKjnbEAIFDNtY_nTDkYqNdlLMVi0pWH-wfqfjWS-JyWr0IGvuwE3x1o3CWzhEc6GMfioPuJw7o06TXRp-ejpCwej4-7XJ6GTcHn737NjHWm-Ww6mgJnT_HaSo2PcgUBgnW3TBhWqXoc5bUbxnldeJNfvFkHrrI8mSI4BeY"/>
+</div>
+<!-- Floating Badge 1: Freshness -->
+<div class="absolute -top-4 -right-2 bg-surface p-3 rounded-xl shadow-lg flex items-center gap-2 transform rotate-6">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="text-primary font-label-lg text-label-lg">Fresco</span>
+</div>
+<!-- Floating Badge 2: Local -->
+<div class="absolute -bottom-6 -left-2 bg-surface p-3 rounded-xl shadow-lg flex items-center gap-2 transform -rotate-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">store</span>
+<span class="text-primary font-label-lg text-label-lg">Local</span>
+</div>
+</div>
+</div>
+<!-- Bottom Text and CTA -->
+<div class="w-full max-w-sm z-10 space-y-8">
+<div class="space-y-4">
+<h1 class="text-on-primary font-headline-xl-mobile text-headline-xl-mobile">
+                    Comida y negocios cerca de ti
+                </h1>
+<p class="text-on-primary-container font-body-md text-body-md px-4">
+                    Descubre los mejores sabores locales y apoya a los negocios de tu comunidad con entregas rápidas y confiables.
+                </p>
+</div>
+<!-- Primary Action -->
+<div class="px-margin-mobile">
+<button class="group w-full bg-surface text-primary py-5 px-8 rounded-2xl font-label-lg text-label-lg flex items-center justify-center gap-3 shadow-xl hover:bg-surface-container-low active:scale-95 transition-all duration-200">
+<span>Empezar</span>
+<span class="material-symbols-outlined text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+</div>
+<!-- Secondary Link -->
+<button class="text-on-primary-container font-label-lg text-label-lg underline underline-offset-4 opacity-80 hover:opacity-100 transition-opacity">
+                Ya tengo una cuenta
+            </button>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-on-tertiary-container/5 rounded-full blur-3xl"></div>
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-secondary/5 rounded-full blur-2xl"></div>
+</main>
+<!-- Navigation suppression check: Splash screen is Transactional/Linear. 
+         Following "Shell Visibility & Relevance" mandate: Suppressing TopAppBar and BottomNavBar. 
+    -->
+</body></html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#404944",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f3f0ea",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-tertiary-container": "#1ac15b",
+                    "primary": "#002e21",
+                    "primary-container": "#0c4635",
+                    "on-primary-container": "#7eb39d",
+                    "secondary": "#9d4300",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#002f10",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-container": "#f0eee8",
+                    "inverse-primary": "#9bd2bb",
+                    "on-surface": "#1c1c18",
+                    "primary-fixed-dim": "#9bd2bb",
+                    "surface-container-highest": "#e5e2dc",
+                    "background": "#fcf9f3",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#FFFFFF",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "on-secondary-fixed-variant": "#783200",
+                    "outline-variant": "#c0c9c3",
+                    "on-secondary-fixed": "#341100",
+                    "secondary-container": "#fd761a",
+                    "on-secondary-container": "#5c2400",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#19503e",
+                    "surface-container-low": "#f6f3ed",
+                    "text-primary": "#1F2937",
+                    "outline": "#707974",
+                    "surface-container-high": "#ebe8e2",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-background": "#1c1c18",
+                    "border-subtle": "#D9E5DF",
+                    "surface-dim": "#dcdad4",
+                    "surface-tint": "#346855",
+                    "secondary-fixed": "#ffdbca",
+                    "secondary-fixed-dim": "#ffb690",
+                    "inverse-surface": "#31312d",
+                    "tertiary-container": "#00481c",
+                    "primary-fixed": "#b7eed6",
+                    "surface-variant": "#e5e2dc",
+                    "on-primary-fixed": "#002117",
+                    "text-secondary": "#6B7280",
+                    "surface-bright": "#fcf9f3",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "2.5rem",
+                    "margin-mobile": "1rem",
+                    "section-gap": "2rem",
+                    "stack-md": "1rem",
+                    "gutter": "1rem",
+                    "stack-sm": "0.5rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "label-sm": ["Inter"],
+                    "headline-xl-mobile": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-md": ["Montserrat"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                    "headline-xl-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen font-body-md">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-mobile py-2 sticky top-0 z-50 bg-surface dark:bg-inverse-surface shadow-sm dark:shadow-none border-b border-border-subtle dark:border-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">location_on</span>
+<span class="text-body-md font-body-md text-primary dark:text-primary-fixed-dim font-bold">Calle Principal 123</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors p-2 rounded-full active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">shopping_cart</span>
+</button>
+</div>
+</header>
+<main class="pb-24">
+<!-- Welcome & Search -->
+<section class="px-margin-mobile pt-stack-md flex flex-col gap-stack-md">
+<h1 class="text-headline-xl-mobile font-headline-xl-mobile text-primary">Hola, ¿qué se te antoja hoy?</h1>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-full border-none bg-surface shadow-sm focus:ring-2 focus:ring-primary text-body-md font-body-md" placeholder="Busca comida, tiendas o productos" type="text"/>
+</div>
+</section>
+<!-- Hero Promo Banner -->
+<section class="px-margin-mobile mt-section-gap">
+<div class="relative w-full h-48 rounded-2xl overflow-hidden bg-primary-container flex items-center justify-between p-6">
+<div class="z-10 max-w-[60%]">
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile text-on-primary mb-2">Envío gratis en tu primer pedido</h2>
+<p class="text-body-sm font-body-sm text-on-primary-container">Usa el código BIENVENIDO y disfruta del sabor local sin salir de casa.</p>
+<button class="mt-4 bg-secondary text-on-secondary px-6 py-2 rounded-full font-label-lg text-label-lg shadow-lg active:scale-95 transition-transform">Pedir ahora</button>
+</div>
+<div class="absolute right-[-10%] top-0 h-full w-1/2 overflow-hidden transform skew-x-[-12deg] bg-secondary-container"></div>
+<img class="absolute right-0 bottom-0 h-4/5 object-contain z-10" data-alt="A gourmet artisan pizza with fresh basil and melted mozzarella cheese, positioned dynamically against a warm orange and forest green studio background. The lighting is high-end and professional, creating soft highlights on the crust. The image captures a fresh, appetizing local food aesthetic, perfectly aligned with a premium modern corporate delivery app palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAl9M1LbRoT9-4_PZQUBi7IayyTSWN_yWfJXEE5-uf_K0WFNjQq8SL82S34_KwZQmTsCWyk_RP5IRfx0Dd2htYVv2T8QR9dL95nyUHc06nBjtZdx7pPL-ifuKfmjb5KpmO7b3zgcryAY6Nr_R2J95BH3SrCacKvOlZOlIwhof_OAw7T6Er0vKMRnKwbzx6EDAW0Mul0fcXfPznSTEnE7qmz8sea92BVZ4EnYU0aNBEyOkvDWxjRRXHwTnX_9d2cQgg8Vm9SB0Ajjs"/>
+</div>
+</section>
+<!-- Horizontal Categories -->
+<section class="mt-section-gap">
+<div class="flex items-center justify-between px-margin-mobile mb-4">
+<h3 class="text-headline-md font-headline-md text-primary">Categorías</h3>
+</div>
+<div class="flex overflow-x-auto gap-stack-md px-margin-mobile hide-scrollbar">
+<!-- Category Item -->
+<div class="flex-shrink-0 flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-16 h-16 rounded-2xl bg-surface shadow-sm border border-border-subtle flex items-center justify-center group-hover:bg-primary-container/10 transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">local_pizza</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface">Pizza</span>
+</div>
+<!-- Category Item -->
+<div class="flex-shrink-0 flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-16 h-16 rounded-2xl bg-surface shadow-sm border border-border-subtle flex items-center justify-center group-hover:bg-primary-container/10 transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">lunch_dining</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface">Burgers</span>
+</div>
+<!-- Category Item -->
+<div class="flex-shrink-0 flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-16 h-16 rounded-2xl bg-surface shadow-sm border border-border-subtle flex items-center justify-center group-hover:bg-primary-container/10 transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">icecream</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface">Postres</span>
+</div>
+<!-- Category Item -->
+<div class="flex-shrink-0 flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-16 h-16 rounded-2xl bg-surface shadow-sm border border-border-subtle flex items-center justify-center group-hover:bg-primary-container/10 transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">local_cafe</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface">Café</span>
+</div>
+<!-- Category Item -->
+<div class="flex-shrink-0 flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-16 h-16 rounded-2xl bg-surface shadow-sm border border-border-subtle flex items-center justify-center group-hover:bg-primary-container/10 transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">bakery_dining</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface">Panadería</span>
+</div>
+<!-- Category Item -->
+<div class="flex-shrink-0 flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-16 h-16 rounded-2xl bg-surface shadow-sm border border-border-subtle flex items-center justify-center group-hover:bg-primary-container/10 transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">shopping_basket</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface">Súper</span>
+</div>
+</div>
+</section>
+<!-- Restaurantes Activos (Bento-style layout) -->
+<section class="mt-section-gap px-margin-mobile">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-headline-md font-headline-md text-primary">Restaurantes activos</h3>
+<span class="text-label-lg font-label-lg text-secondary">Ver todos</span>
+</div>
+<div class="grid grid-cols-1 gap-stack-md">
+<!-- Restaurant Card -->
+<article class="bg-surface rounded-2xl overflow-hidden shadow-sm border border-border-subtle flex flex-col active:scale-[0.98] transition-all">
+<div class="relative h-44 w-full">
+<img class="w-full h-full object-cover" data-alt="A vibrant, warm restaurant interior showcasing a rustic wooden table with beautifully plated gourmet dishes. The soft morning sunlight streams through a large window, creating a welcoming and reliable atmosphere. The image uses a clean, professional photography style with a focus on fresh ingredients and high-quality local cuisine." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjfd6X1qCRISer3GdI23ob6l74Vx3CLMVAYXzY0OSCc4Xqf0omC3D5LOa4Tgo1zvTDxfVOrJtUhGjrpmCv6grhRd9miBTQCBH5NMi-zq4884KjSrVn4zXe8qwci5juO2PYyg-FLe92NhKuujBztXOW_2lbf-Gt-9oOSlHVXdDf7mYtQAlHSm1lbVw5r3UU87VDtnlBJrSWVhg4KmhQtuC24mcczXoQPbh4S_e-MNZ8h7EgZgDCRdlPRbxhCe-jN8GaEESyRrhDsbQ"/>
+<div class="absolute top-3 right-3 bg-surface/90 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm font-bold">4.8</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h4 class="text-headline-md font-headline-md text-primary">El Fogón Criollo</h4>
+<span class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span> 25-35 min
+                            </span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Comida Típica • Parrilla • Tradición</p>
+<div class="mt-2 flex gap-2">
+<span class="bg-primary/5 text-primary text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded border border-primary/10">Envío Gratis</span>
+<span class="bg-secondary/5 text-secondary text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded border border-secondary/10">Promos</span>
+</div>
+</div>
+</article>
+<!-- Small Cards Row -->
+<div class="grid grid-cols-2 gap-stack-md">
+<!-- Mini Card 1 -->
+<article class="bg-surface rounded-2xl overflow-hidden shadow-sm border border-border-subtle active:scale-[0.98] transition-all">
+<div class="relative h-32 w-full">
+<img class="w-full h-full object-cover" data-alt="Close up of a juicy smash burger with melted cheddar cheese and crisp lettuce on a toasted brioche bun. The lighting is warm and directional, highlighting textures. High-end food photography style with a minimalist background that feels modern and local." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4Teyole-yfCgxwjUuS_HRt_KLdn9Si9QhaEWNzshjRfYh-xyPMVbrrJHsMcrRGz0n5Y9cLec5a4lP1qX8dAa21AOwxHvzOxaoJK4-WHZOFK0KFM-GH_Wohq-1qs4hlOMamBbh39pQLJoJejVULHEjJFFVcVZHgGAFocGdRE3rZKOLiuaS6stbRBt8ZxKDN-4JEAlAZC2FkbefMMRnNcERYtH5ahkmqvKfhPwz1pKMon4sG4P-Y8E_01bk2X7goCz7Ta0TCbIlYYw"/>
+</div>
+<div class="p-3">
+<h5 class="font-bold text-primary truncate">Burger House</h5>
+<div class="flex items-center justify-between mt-1">
+<span class="text-[11px] text-on-surface-variant">15-20 min</span>
+<div class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-secondary text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[11px] font-bold">4.5</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Mini Card 2 -->
+<article class="bg-surface rounded-2xl overflow-hidden shadow-sm border border-border-subtle active:scale-[0.98] transition-all">
+<div class="relative h-32 w-full">
+<img class="w-full h-full object-cover" data-alt="A bowl of fresh sushi with vibrant tuna and salmon, garnished with ginger and wasabi. The image is bright and clean, emphasizing freshness and local availability. Modern corporate food aesthetic with soft shadows and high-key lighting for a premium look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCebGeXU3f1OfNtaVjqNBEVCSPs7S6hkyHQZK8ar14RW_v1kUsfMK8wLMGtJifh-2M-aRMbzTx1pM-f7qWNbMnqrir7UV0DwYvBqbXeVWsJXVbUqdlJ9cwbckPzPHPNiiqTOhue87Bumz6jH6wMoADcmn_hnOKrYfyFbjuuER_TrostmlGqmuiyeiMzjykecYxpuYngqWiBdIfB5O5_yyfShEZRbl_RyfSnZY3xfVBSCAA-3TDH8PC0rRVe7rePR530YaiOrzEbSE0"/>
+</div>
+<div class="p-3">
+<h5 class="font-bold text-primary truncate">Sushi Garden</h5>
+<div class="flex items-center justify-between mt-1">
+<span class="text-[11px] text-on-surface-variant">30-40 min</span>
+<div class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-secondary text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[11px] font-bold">4.7</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- Negocios cerca de ti -->
+<section class="mt-section-gap">
+<div class="flex items-center justify-between px-margin-mobile mb-4">
+<h3 class="text-headline-md font-headline-md text-primary">Negocios cerca de ti</h3>
+</div>
+<div class="flex overflow-x-auto gap-4 px-margin-mobile hide-scrollbar">
+<!-- Nearby Biz 1 -->
+<div class="flex-shrink-0 w-64 bg-surface rounded-2xl border border-border-subtle overflow-hidden shadow-sm">
+<img class="w-full h-32 object-cover" data-alt="Professional wide shot of a boutique local grocery store with fresh produce neatly arranged. The shop lighting is warm and invites trust. The aesthetic is modern and local, highlighting the reliability of community businesses with a clean, high-quality visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTSFKfyrELj7zKZt90JWVT7_O0ldFtlh7eq18kyqoe3fTxMK0ONupkiVkqsp6onFzEWxncKUmddD_pQt7_0GqHlhRuVB-9IpBVqlbMfVBrBI-fbU4YHgoko1I6C-06zZlZng9SPDcz5q22ZLqutGhNkQJGv0mXOVmKtL4tFghGx-FBnXNm7M26quNBJ1tJ3WJbJQWyjwqvLYc2vvaFA6tvN2tYncSWh0ePnpD5dRX6ZURZt5fKelTWPdxiFaQGgPXtjbkFLR6Fv2w"/>
+<div class="p-4">
+<h5 class="font-bold text-primary">La Esquina Gourmet</h5>
+<p class="text-body-sm text-on-surface-variant mb-3">Víveres y Delicatesen</p>
+<div class="flex items-center gap-2">
+<span class="bg-on-tertiary-container/10 text-on-tertiary-container text-[10px] font-bold px-2 py-1 rounded-full uppercase">Abierto ahora</span>
+</div>
+</div>
+</div>
+<!-- Nearby Biz 2 -->
+<div class="flex-shrink-0 w-64 bg-surface rounded-2xl border border-border-subtle overflow-hidden shadow-sm">
+<img class="w-full h-32 object-cover" data-alt="Interior of a modern artisan bakery with fresh loaves of bread on shelves and a warm, golden glow from the baking ovens. The mood is fresh and cozy, emphasizing a bridge between traditional flavor and modern delivery convenience. High-resolution food photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9t2e2fptmUllFuea32ZAHQjyxVWxJihZQXELjaES209nNK0uZN-V7kJPZxhzd9pPdS7KwL5ZGy8jdaM7pU3FIbNlaiPVFDbARwiFY-qpHZgRO3zL7e2MNb5zzqt31v_bOhvmn-YqWEzrACOhyf2nUynjlgP7ZibI7d5VIlH8zr9nYVT3IDVHQpdaIRO2WxbBjERCPWhYC_xzzZrZzXn5bQCIn1t8MPtyGcAelE6F3vHaAOOmURyT2m-RfSCxJ_1Xc8JEQCEvaCDA"/>
+<div class="p-4">
+<h5 class="font-bold text-primary">Pan Artesano San Jose</h5>
+<p class="text-body-sm text-on-surface-variant mb-3">Panadería y Pastelería</p>
+<div class="flex items-center gap-2">
+<span class="bg-on-tertiary-container/10 text-on-tertiary-container text-[10px] font-bold px-2 py-1 rounded-full uppercase">Abierto ahora</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface dark:bg-inverse-surface py-2 pb-safe px-2 border-t border-border-subtle dark:border-on-surface-variant shadow-lg dark:shadow-none rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim bg-primary-container/10 rounded-full px-4 py-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-label-sm font-label-sm">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-on-surface-variant/20 active:scale-90 transition-transform duration-150 p-2" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="text-label-sm font-label-sm">Buscar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-on-surface-variant/20 active:scale-90 transition-transform duration-150 p-2" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-label-sm font-label-sm">Pedidos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-on-surface-variant/20 active:scale-90 transition-transform duration-150 p-2" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm">Perfil</span>
+</a>
+</nav>
+</body></html>

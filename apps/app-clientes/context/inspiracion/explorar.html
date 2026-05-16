@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Buscar - Local &amp; Fresco</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        /* Tonal Layering Shadows */
+        .brand-shadow {
+            box-shadow: 0 4px 12px rgba(12, 70, 53, 0.06);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#404944",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f3f0ea",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-tertiary-container": "#1ac15b",
+                    "primary": "#002e21",
+                    "primary-container": "#0c4635",
+                    "on-primary-container": "#7eb39d",
+                    "secondary": "#9d4300",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#002f10",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-container": "#f0eee8",
+                    "inverse-primary": "#9bd2bb",
+                    "on-surface": "#1c1c18",
+                    "primary-fixed-dim": "#9bd2bb",
+                    "surface-container-highest": "#e5e2dc",
+                    "background": "#fcf9f3",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#FFFFFF",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "on-secondary-fixed-variant": "#783200",
+                    "outline-variant": "#c0c9c3",
+                    "on-secondary-fixed": "#341100",
+                    "secondary-container": "#fd761a",
+                    "on-secondary-container": "#5c2400",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#19503e",
+                    "surface-container-low": "#f6f3ed",
+                    "text-primary": "#1F2937",
+                    "outline": "#707974",
+                    "surface-container-high": "#ebe8e2",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-background": "#1c1c18",
+                    "border-subtle": "#D9E5DF",
+                    "surface-dim": "#dcdad4",
+                    "surface-tint": "#346855",
+                    "secondary-fixed": "#ffdbca",
+                    "secondary-fixed-dim": "#ffb690",
+                    "inverse-surface": "#31312d",
+                    "tertiary-container": "#00481c",
+                    "primary-fixed": "#b7eed6",
+                    "surface-variant": "#e5e2dc",
+                    "on-primary-fixed": "#002117",
+                    "text-secondary": "#6B7280",
+                    "surface-bright": "#fcf9f3",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "2.5rem",
+                    "margin-mobile": "1rem",
+                    "section-gap": "2rem",
+                    "stack-md": "1rem",
+                    "gutter": "1rem",
+                    "stack-sm": "0.5rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "label-sm": ["Inter"],
+                    "headline-xl-mobile": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-md": ["Montserrat"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                    "headline-xl-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<!-- Top Navigation Header -->
+<header class="flex justify-between items-center w-full px-margin-mobile py-2 sticky top-0 z-50 bg-surface dark:bg-inverse-surface border-b border-border-subtle dark:border-on-surface-variant shadow-sm dark:shadow-none">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="location_on">location_on</span>
+<h1 class="text-headline-md-mobile font-headline-md text-primary dark:text-primary-fixed-dim">Calle Principal 123</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim p-2 hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors active:scale-95 transition-all duration-200" data-icon="shopping_cart">shopping_cart</button>
+</div>
+</header>
+<main class="pb-24">
+<!-- Search Field Section -->
+<section class="px-margin-mobile pt-4 pb-2 sticky top-[53px] bg-background z-40">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface border border-border-subtle rounded-2xl focus:ring-2 focus:ring-primary focus:border-primary outline-none text-body-md font-body-md placeholder-on-surface-variant/60 brand-shadow" placeholder="¿Qué se te antoja hoy?" type="text"/>
+</div>
+</section>
+<!-- Filter Chips -->
+<section class="flex overflow-x-auto gap-2 px-margin-mobile py-4 no-scrollbar">
+<button class="flex items-center gap-1.5 px-4 py-2 bg-primary text-on-primary rounded-full text-label-lg font-label-lg whitespace-nowrap active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+                Filtros
+            </button>
+<button class="px-4 py-2 bg-surface-container-low text-on-surface border border-border-subtle rounded-full text-label-lg font-label-lg whitespace-nowrap hover:bg-surface-container-high transition-colors">
+                Abierto ahora
+            </button>
+<button class="px-4 py-2 bg-surface-container-low text-on-surface border border-border-subtle rounded-full text-label-lg font-label-lg whitespace-nowrap hover:bg-surface-container-high transition-colors">
+                Envío gratis
+            </button>
+<button class="px-4 py-2 bg-surface-container-low text-on-surface border border-border-subtle rounded-full text-label-lg font-label-lg whitespace-nowrap hover:bg-surface-container-high transition-colors">
+                Mejor valorados
+            </button>
+</section>
+<!-- Category Bento Grid -->
+<section class="px-margin-mobile mb-section-gap">
+<h2 class="text-headline-md font-headline-md mb-stack-md">Categorías</h2>
+<div class="grid grid-cols-2 grid-rows-2 gap-3 h-[280px]">
+<div class="relative rounded-2xl overflow-hidden bg-primary-container group col-span-1 row-span-2">
+<img alt="" class="w-full h-full object-cover" data-alt="A high-angle professional food photograph of a variety of colorful Mediterranean dishes including hummus, pita bread, and grilled vegetables on a warm wooden table. The lighting is bright and natural, enhancing the fresh greens and rich oranges of the food. The style is modern corporate, clean and appetizing, consistent with a high-end food delivery application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHurRg-Zw6Tcio0GVv1UzaUzQMgBV1useZBSA4RdpgaN4KcgciUcECClxWxdP4OFI0lpnZ4282ErOowMOP4IlsF33LFXXvv1bLwEE1I6tlF1VkDLZobBJuoQMKdzWvd8U74U8RibyB2pRHIEZ68dgiIL95z4FuKqpnU_fSZaaxC2o5KD45Z22YJyzRmPN47w4MNLVPtTgDhrh5FtBRplv2efAAIGcFVbUbwdiOt_qRZ5aOhsjHYuuymm1EJ2r-A2YMbMsuDEQLXYg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-4">
+<span class="text-on-primary font-headline-md text-headline-md">Restaurantes</span>
+<span class="text-on-primary/80 text-label-sm font-label-sm">Lo mejor de la zona</span>
+</div>
+</div>
+<div class="relative rounded-2xl overflow-hidden bg-secondary-container group col-span-1 row-span-1">
+<img alt="" class="w-full h-full object-cover" data-alt="A clean, vibrant close-up of a grocery store basket filled with fresh, dew-covered organic produce including red tomatoes, leafy greens, and bright bell peppers. The setting is a brightly lit, modern marketplace with soft white light highlighting the textures. The colors are saturated and fresh, reflecting a premium delivery experience with warm cream background tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6-WtCC4euT_fzTzVXN06aCHdslTu5_a6d4bKygAnFx9iG9aqhnOCCRD_NXJRD38QZkcwpgaiqAMIRw5rgSuVYM1LRxAl2sFx1_AGZcEsoodTeK-JSKf8l4NiAM4ImCYC4Ds-9BJd5lwguYF2xrvsehUdGYSYwQxLQ0J2R5e-o2-k35oiuuvccOwge2D3pgbHCNQ3a4DFWcDVxaBlVEVpzHUyu_6tCK6O0dh5cff4UJwfnJwSRXaXUM95KIgiB37P-l-UF2d9PcrU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent flex flex-col justify-end p-4">
+<span class="text-on-primary font-headline-md text-headline-md">Mercado</span>
+</div>
+</div>
+<div class="relative rounded-2xl overflow-hidden bg-tertiary-container group col-span-1 row-span-1">
+<img alt="" class="w-full h-full object-cover" data-alt="A stylish, warm bakery scene featuring freshly baked artisanal bread and golden pastries arranged on a white marble counter. The lighting is soft and golden, suggesting a cozy local atmosphere. The composition is clean and focused, utilizing the brand's professional yet approachable aesthetic with heavy whitespace and high-quality textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUjKLHzdGiaS5PhD9vRaE_DcYsyx9TiJn0ySUJQF-aQuWgaRwT4SqCnzzAb3dXmTKzuLpY-QKdkkuupA1VnFnbF2v-UyNRUwyW_3fcSzyxQeN35tOjUVC6pJWXtnDO5m04RV6JjwAOQ_9GQlkL6XJQ2YKmmSsDBpcjJOb9KSiyZ1pBxc8wqjRGciWzuV1UMrA3wmlT1M5DquwMh6m0wy6ENv6guTb1rWJPuZe0Tia7Jt5AnpAyiAFYDvDEcrXuQwlUAcn2uL4tiKo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-tertiary/80 to-transparent flex flex-col justify-end p-4">
+<span class="text-on-primary font-headline-md text-headline-md">Panadería</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Search Results List -->
+<section class="px-margin-mobile">
+<h2 class="text-headline-md font-headline-md mb-stack-md">Resultados para ti</h2>
+<div class="flex flex-col gap-4">
+<!-- Result Card 1: Restaurant -->
+<div class="bg-surface border border-border-subtle rounded-2xl overflow-hidden brand-shadow group active:scale-[0.98] transition-transform">
+<div class="relative h-48">
+<img alt="" class="w-full h-full object-cover" data-alt="A delicious, gourmet pizza with fresh basil and melted buffalo mozzarella served on a rustic stone plate. The background is a clean, bright, modern restaurant interior with warm lighting. The image captures the fresh, local, and reliable essence of the brand through vibrant colors and high-quality food styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS-53-JawnAJymO8kJ-ZWPCsL02LE2ORuuOo6MmOtnXPyD__pjtdeBu-R9U8L_QOBMzFyvnZ_3RPHpXDkyutvT7I60ST18Md_61Z32-0ZcKWSLgRwVPCLfmTrUnxTKqywvEkNS6desGinNi4Nd5wMRrVvyBoj4-M8nlCSIgz7zVBr_3cv6jFKqv-_rn_Mo_4nztItHBWjinEzpEiMH1G5aJ2jenAjX5hT2Ji-8XH07CC9qrYEXHZ4YHuGzM7ahVfhZO8EYrN6RMQ8"/>
+<div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm font-bold text-on-surface">4.8</span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline-lg text-headline-lg text-primary">La Vera Pizza</h3>
+<span class="bg-on-tertiary-container/10 text-on-tertiary-container px-2 py-0.5 rounded-full text-label-sm font-label-sm">Abierto</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-body-sm font-body-sm">
+<span>Italiana • Pizza</span>
+<span>•</span>
+<span>25-35 min</span>
+</div>
+<div class="mt-3 pt-3 border-t border-border-subtle flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="delivery_dining">delivery_dining</span>
+<span class="text-label-sm font-label-sm">Envío gratis</span>
+</div>
+<span class="text-label-sm font-label-sm">Pedido min. 10€</span>
+</div>
+</div>
+</div>
+<!-- Result Card 2: Store -->
+<div class="bg-surface border border-border-subtle rounded-2xl overflow-hidden brand-shadow group active:scale-[0.98] transition-transform">
+<div class="relative h-48">
+<img alt="" class="w-full h-full object-cover" data-alt="A sleek, modern organic boutique store interior with neatly organized shelves of high-quality local products. The lighting is professional and bright, emphasizing a premium retail experience. The visual style is rooted in a local context with a fresh, corporate-modern aesthetic using warm cream and deep green tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhxBewB2oLVV0lwML9FN0yfkhpVzCCQMdImE7cBv-L3Q7rDnu74dOOZDGNqIRn_o-t4H-0i_lZ_3CAvDzXMRV0dPRCsRYPaeX6j--rgN2XZgObuDisHee3baZaWuUcUfnWdv7Wj00hEJoEkj_LIpfx3KMCpHBP9UhTmy4pDvFQY7g1FNj2FLeguTxeCuIgF1Bk4eSuHWcJMcUOTC8lapUrGlP6d5GFdecXQGhgMGU3-mbe9oItO85zofI6SYiKUVhySAA-AvEdFmo"/>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline-lg text-headline-lg text-primary">BioMarket Centro</h3>
+<span class="bg-on-tertiary-container/10 text-on-tertiary-container px-2 py-0.5 rounded-full text-label-sm font-label-sm">Premium</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-body-sm font-body-sm">
+<span>Supermercado • Orgánico</span>
+<span>•</span>
+<span>15-20 min</span>
+</div>
+<div class="mt-3 pt-3 border-t border-border-subtle flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="shopping_basket">shopping_basket</span>
+<span class="text-label-sm font-label-sm">Recogida disponible</span>
+</div>
+<span class="text-label-sm font-label-sm">Más de 500 artículos</span>
+</div>
+</div>
+</div>
+<!-- Result Card 3: Restaurant -->
+<div class="bg-surface border border-border-subtle rounded-2xl overflow-hidden brand-shadow group active:scale-[0.98] transition-transform">
+<div class="relative h-48">
+<img alt="" class="w-full h-full object-cover" data-alt="A gourmet juicy burger with melting cheese and fresh vegetables served on a minimalist white ceramic plate. The background is softly blurred, focusing on the high-quality textures of the food. The lighting is warm and inviting, aligning with the brand's local and fresh identity in a professional corporate-modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPGA_txw4_AiXia0cDZBKXVsHluSEhbZoioQF-TsaW3gLhUM2IKxOnH-RdtyddB4fMo89s6tn5mIfDOLX37tJ_xPT1v7V6NPO3W7afJuE33Wkd6JJxdQ3JPsL7vcrgpc7WnUxZJ2ARy1o_TfrfGX83K8Ue1U6AS0ts9XxPv5-FavSfPoaGv_0wmphk27Io051zuVwHJ2t9gGLj8UNkbyLjIFbtQTeRxarm3-NukdRaLkRL1a2rOS3MSnT34BAdx5BcCSs1FGVOlRw"/>
+<div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm font-bold text-on-surface">4.5</span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline-lg text-headline-lg text-primary">Burger Craft</h3>
+<span class="bg-surface-container-highest/50 text-on-surface-variant px-2 py-0.5 rounded-full text-label-sm font-label-sm">Cierra pronto</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-body-sm font-body-sm">
+<span>Hamburguesas • Americana</span>
+<span>•</span>
+<span>30-40 min</span>
+</div>
+<div class="mt-3 pt-3 border-t border-border-subtle flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+<span class="text-label-sm font-label-sm">Programar entrega</span>
+</div>
+<span class="text-label-sm font-label-sm">Envío 2.50€</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface dark:bg-inverse-surface py-2 pb-safe px-2 border-t border-border-subtle dark:border-on-surface-variant shadow-lg dark:shadow-none rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-on-surface-variant/20 active:scale-90 transition-transform duration-150 px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim bg-primary-container/10 rounded-full px-4 py-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="search" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="text-label-sm font-label-sm">Buscar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-on-surface-variant/20 active:scale-90 transition-transform duration-150 px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-sm font-label-sm">Pedidos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-on-surface-variant/20 active:scale-90 transition-transform duration-150 px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-sm font-label-sm">Perfil</span>
+</a>
+</nav>
+</body></html>

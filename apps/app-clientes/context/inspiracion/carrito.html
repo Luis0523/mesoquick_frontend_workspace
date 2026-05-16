@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#404944",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f3f0ea",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-tertiary-container": "#1ac15b",
+                    "primary": "#002e21",
+                    "primary-container": "#0c4635",
+                    "on-primary-container": "#7eb39d",
+                    "secondary": "#9d4300",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#002f10",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-container": "#f0eee8",
+                    "inverse-primary": "#9bd2bb",
+                    "on-surface": "#1c1c18",
+                    "primary-fixed-dim": "#9bd2bb",
+                    "surface-container-highest": "#e5e2dc",
+                    "background": "#fcf9f3",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#FFFFFF",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "on-secondary-fixed-variant": "#783200",
+                    "outline-variant": "#c0c9c3",
+                    "on-secondary-fixed": "#341100",
+                    "secondary-container": "#fd761a",
+                    "on-secondary-container": "#5c2400",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#19503e",
+                    "surface-container-low": "#f6f3ed",
+                    "text-primary": "#1F2937",
+                    "outline": "#707974",
+                    "surface-container-high": "#ebe8e2",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-background": "#1c1c18",
+                    "border-subtle": "#D9E5DF",
+                    "surface-dim": "#dcdad4",
+                    "surface-tint": "#346855",
+                    "secondary-fixed": "#ffdbca",
+                    "secondary-fixed-dim": "#ffb690",
+                    "inverse-surface": "#31312d",
+                    "tertiary-container": "#00481c",
+                    "primary-fixed": "#b7eed6",
+                    "surface-variant": "#e5e2dc",
+                    "on-primary-fixed": "#002117",
+                    "text-secondary": "#6B7280",
+                    "surface-bright": "#fcf9f3",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "2.5rem",
+                    "margin-mobile": "1rem",
+                    "section-gap": "2rem",
+                    "stack-md": "1rem",
+                    "gutter": "1rem",
+                    "stack-sm": "0.5rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "label-sm": ["Inter"],
+                    "headline-xl-mobile": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-md": ["Montserrat"],
+                    "headline-md-mobile": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                    "headline-xl-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md-mobile": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fcf9f3;
+        }
+        .tinted-shadow {
+            box-shadow: 0 4px 12px rgba(0, 46, 33, 0.06);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-mobile py-2 sticky top-0 z-50 bg-surface dark:bg-inverse-surface border-b border-border-subtle dark:border-on-surface-variant shadow-sm dark:shadow-none">
+<div class="flex items-center gap-stack-sm">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="text-headline-md-mobile font-headline-md text-primary dark:text-primary-fixed-dim">Calle Principal 123</span>
+</div>
+<div class="active:scale-95 transition-all duration-200 p-2 hover:bg-surface-container-low dark:hover:bg-surface-container-highest rounded-full">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">shopping_cart</span>
+</div>
+</header>
+<main class="max-w-3xl mx-auto px-margin-mobile pt-stack-md pb-32">
+<div class="flex items-center justify-between mb-section-gap">
+<h1 class="font-headline-xl-mobile text-headline-xl-mobile text-primary">Tu Carrito</h1>
+<button class="flex items-center gap-1 text-secondary font-label-lg text-label-lg hover:underline transition-all">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+                Agregar más
+            </button>
+</div>
+<!-- Cart Items List -->
+<section class="space-y-stack-md">
+<!-- Item 1 -->
+<div class="bg-surface rounded-2xl p-4 tinted-shadow flex gap-4 border border-surface-container-highest">
+<div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A close-up, high-angle shot of a gourmet pepperoni pizza with bubbling mozzarella cheese and fresh basil leaves on a white ceramic plate. The lighting is warm and natural, creating a cozy and appetizing atmosphere against a minimalist cream-colored background. The vibrant reds and greens pop against the neutral tones, maintaining a professional and fresh aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKLvv6Ue4gQUs3PPIE9H5US45_6EHFvS4X_a4urw-jyWNeBVGKR0Qfyfum_LXUNKsIrK007h8rRc9EDvikOnmJxWRaPBLgxIpPfd1mx5d6F76Rnc8meJyz1Chlr9oA2pSBBMXHUHfHDLuqXZWpygQjCKcZj4jX0EEdH8g8bZxu960Vz6vWczNBa9r-Rch0X9HFnN5-CkdyMLss3dQ7GFYHPgjClBPJ2-_7Xs7Jta8mzvDABIragw2GKJBjOSt8thfzmqEr8iJE0oY"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md-mobile text-headline-md-mobile text-primary">Pizza Pepperoni Familiar</h3>
+<p class="text-body-sm text-on-surface-variant">Masa delgada, extra queso</p>
+</div>
+<span class="font-label-lg text-label-lg text-primary">$18.50</span>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center bg-surface-container-low rounded-full px-2 py-1 border border-border-subtle">
+<button class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-container-high rounded-full transition-colors active:scale-90">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="px-3 font-label-lg text-label-lg text-on-surface">1</span>
+<button class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-container-high rounded-full transition-colors active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<button class="text-error/80 hover:text-error transition-colors p-1">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface rounded-2xl p-4 tinted-shadow flex flex-col gap-3 border border-surface-container-highest">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A premium artisanal burger with layers of fresh lettuce, heirloom tomatoes, and a juicy beef patty on a brioche bun, presented on a clean white surface. Soft studio lighting highlights the textures and rich colors of the fresh ingredients. The image has a modern corporate yet organic feel, with a bright and airy atmosphere using a warm cream and deep green color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApeKwJXc0x0dzx2ktmbK6_NRboJFYDS4vusFZ4dQEUlxdw6uODrH4X212tjhxbSG0w_suTKC5cqKX5PsNpT1C-ijga9FsFsxMem5aCjcgHIoW4f6Rre_3vfU_H40NZrpVhjzgZp6KSVfceAndfH4C-rJT2nrDXtWzK0rKN9AIv9KO6-pibMHG42UKCO-TA3BYauDR-TM6hrEdMcENtwrHdSqGhb79f8IEPEN0wKq7Pdnw83qLdDVqrKaZtC8JHCrR_iOYF7ZWVXs4"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md-mobile text-headline-md-mobile text-primary">Hamburguesa de la Casa</h3>
+<p class="text-body-sm text-on-surface-variant">Con papas fritas</p>
+</div>
+<span class="font-label-lg text-label-lg text-primary">$12.00</span>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center bg-surface-container-low rounded-full px-2 py-1 border border-border-subtle">
+<button class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-container-high rounded-full transition-colors active:scale-90">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="px-3 font-label-lg text-label-lg text-on-surface">2</span>
+<button class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-container-high rounded-full transition-colors active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<button class="text-error/80 hover:text-error transition-colors p-1">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Note Input -->
+<div class="relative mt-2">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-[20px]">notes</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-border-subtle rounded-xl text-body-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-outline/60" placeholder="Agregar nota al restaurante..." type="text"/>
+</div>
+</div>
+</section>
+<!-- Order Summary Card -->
+<section class="mt-section-gap bg-surface rounded-2xl p-6 tinted-shadow border border-surface-container-highest">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Resumen de Pago</h2>
+<div class="space-y-3">
+<div class="flex justify-between text-body-md text-on-surface-variant">
+<span>Subtotal</span>
+<span>$42.50</span>
+</div>
+<div class="flex justify-between text-body-md text-on-surface-variant">
+<span>Costo de Envío</span>
+<span class="text-tertiary-container font-medium">Gratis</span>
+</div>
+<div class="flex justify-between text-body-md text-on-surface-variant">
+<span>Impuestos</span>
+<span>$3.40</span>
+</div>
+<div class="pt-3 border-t border-border-subtle flex justify-between items-center">
+<span class="font-headline-md text-headline-md text-primary">Total</span>
+<span class="font-headline-lg text-headline-lg text-primary">$45.90</span>
+</div>
+</div>
+</section>
+<!-- Promo Code -->
+<div class="mt-stack-md flex gap-2">
+<input class="flex-grow px-4 py-3 bg-white border border-border-subtle rounded-2xl text-body-md focus:ring-2 focus:ring-primary outline-none" placeholder="Código de cupón" type="text"/>
+<button class="px-6 py-3 border-1.5 border-primary text-primary font-label-lg text-label-lg rounded-2xl border-[1.5px] hover:bg-primary-container/5 transition-colors">Aplicar</button>
+</div>
+</main>
+<!-- Bottom Actions & Navigation -->
+<div class="fixed bottom-0 left-0 w-full z-50 bg-surface dark:bg-inverse-surface border-t border-border-subtle dark:border-on-surface-variant px-4 py-4 pb-safe shadow-lg">
+<div class="max-w-3xl mx-auto space-y-4">
+<!-- Main CTA -->
+<button class="w-full bg-primary text-on-primary py-4 rounded-2xl font-headline-md text-headline-md flex items-center justify-center gap-2 active:scale-95 transition-all shadow-md">
+                Continuar con el pago
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<!-- Navigation Anchors -->
+<nav class="flex justify-around items-center pt-2">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high transition-colors p-2 rounded-xl">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm mt-1">Inicio</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high transition-colors p-2 rounded-xl">
+<span class="material-symbols-outlined">search</span>
+<span class="text-label-sm font-label-sm mt-1">Buscar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim bg-primary-container/10 rounded-full px-4 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="text-label-sm font-label-sm mt-0.5">Pedidos</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high transition-colors p-2 rounded-xl">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm mt-1">Perfil</span>
+</div>
+</nav>
+</div>
+</div>
+</body></html>

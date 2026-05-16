@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Negocios Activos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#404944",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f3f0ea",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-tertiary-container": "#1ac15b",
+                    "primary": "#002e21",
+                    "primary-container": "#0c4635",
+                    "on-primary-container": "#7eb39d",
+                    "secondary": "#9d4300",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#002f10",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-container": "#f0eee8",
+                    "inverse-primary": "#9bd2bb",
+                    "on-surface": "#1c1c18",
+                    "primary-fixed-dim": "#9bd2bb",
+                    "surface-container-highest": "#e5e2dc",
+                    "background": "#fcf9f3",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#FFFFFF",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "on-secondary-fixed-variant": "#783200",
+                    "outline-variant": "#c0c9c3",
+                    "on-secondary-fixed": "#341100",
+                    "secondary-container": "#fd761a",
+                    "on-secondary-container": "#5c2400",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#19503e",
+                    "surface-container-low": "#f6f3ed",
+                    "text-primary": "#1F2937",
+                    "outline": "#707974",
+                    "surface-container-high": "#ebe8e2",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-background": "#1c1c18",
+                    "border-subtle": "#D9E5DF",
+                    "surface-dim": "#dcdad4",
+                    "surface-tint": "#346855",
+                    "secondary-fixed": "#ffdbca",
+                    "secondary-fixed-dim": "#ffb690",
+                    "inverse-surface": "#31312d",
+                    "tertiary-container": "#00481c",
+                    "primary-fixed": "#b7eed6",
+                    "surface-variant": "#e5e2dc",
+                    "on-primary-fixed": "#002117",
+                    "text-secondary": "#6B7280",
+                    "surface-bright": "#fcf9f3",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "2.5rem",
+                    "margin-mobile": "1rem",
+                    "section-gap": "2rem",
+                    "stack-md": "1rem",
+                    "gutter": "1rem",
+                    "stack-sm": "0.5rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "label-sm": ["Inter"],
+                    "headline-xl-mobile": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-md": ["Montserrat"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                    "headline-xl-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fcf9f3;
+        }
+        .shadow-brand {
+            box-shadow: 0 4px 12px rgba(0, 46, 33, 0.06);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-mobile py-2 sticky top-0 z-50 bg-surface dark:bg-inverse-surface border-b border-border-subtle dark:border-on-surface-variant shadow-sm dark:shadow-none">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">location_on</span>
+<span class="text-headline-md-mobile font-headline-md text-primary dark:text-primary-fixed-dim">Calle Principal 123</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-all duration-200 hover:bg-surface-container-low dark:hover:bg-surface-container-highest p-2 rounded-full">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">shopping_cart</span>
+</button>
+</div>
+</header>
+<main class="min-h-screen pb-24">
+<!-- Title Section -->
+<section class="px-margin-mobile pt-8 pb-4">
+<h1 class="text-headline-xl-mobile font-headline-xl-mobile text-primary">Negocios activos</h1>
+<p class="text-on-surface-variant mt-1">Servicios locales y retail a tu disposición</p>
+</section>
+<!-- Search & Filter -->
+<div class="px-margin-mobile mb-section-gap">
+<div class="relative flex items-center bg-surface-container-lowest border border-border-subtle rounded-full px-4 py-3 shadow-brand">
+<span class="material-symbols-outlined text-on-surface-variant mr-3">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-body-md placeholder-on-surface-variant/60" placeholder="¿Qué negocio buscas?" type="text"/>
+</div>
+</div>
+<!-- Horizontal Categories -->
+<section class="mb-section-gap">
+<div class="flex overflow-x-auto gap-stack-md px-margin-mobile no-scrollbar">
+<button class="flex-shrink-0 px-6 py-2.5 rounded-2xl bg-primary text-on-primary font-label-lg shadow-md transition-all active:scale-95">
+                    Todos
+                </button>
+<button class="flex-shrink-0 px-6 py-2.5 rounded-2xl bg-surface border border-border-subtle text-on-surface-variant font-label-lg hover:bg-surface-container-high transition-all">
+                    Farmacias
+                </button>
+<button class="flex-shrink-0 px-6 py-2.5 rounded-2xl bg-surface border border-border-subtle text-on-surface-variant font-label-lg hover:bg-surface-container-high transition-all">
+                    Tiendas
+                </button>
+<button class="flex-shrink-0 px-6 py-2.5 rounded-2xl bg-surface border border-border-subtle text-on-surface-variant font-label-lg hover:bg-surface-container-high transition-all">
+                    Conveniencia
+                </button>
+</div>
+</section>
+<!-- Business Bento Grid -->
+<section class="px-margin-mobile grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Business Card 1: Pharmacy -->
+<div class="bg-surface rounded-2xl shadow-brand overflow-hidden flex flex-col group">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A brightly lit, modern pharmacy interior with clean white shelves organized with pharmaceutical products and medical supplies. The lighting is soft and professional, emphasizing a sterile and trustworthy environment. The scene is shot from a wide angle, capturing the spacious and local neighborhood vibe of a reliable health center." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRFMv2E45pGeLXhEnlrkkPTCckRFN5H_bELayLlLLaONHfF5Tz7MhV6Gq5qsbBVMBVFuqrf8h7Cbv6E7ms7yrOaz82Q8WudcDYDbxSBMP7fuK-RkMF3QG2BwEKUb8z5aQ4-p1yt-J37euhGA5TsZF341vRMPpD1BmdfMo4GbGF93IQa7gbw92ctQQbkEE7H8sdneX50OVUrAMHoh8A_lRzvthVkHZziN_CBMAfjw66H7IMceedigf0HkHZF94RIUYQ_4pON0lDtXQ"/>
+<div class="absolute top-4 left-4 bg-tertiary/10 backdrop-blur-md px-3 py-1 rounded-full">
+<span class="text-tertiary-container font-label-sm uppercase tracking-wider">Abierto 24/7</span>
+</div>
+</div>
+<div class="p-stack-md flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-stack-sm">
+<div>
+<h3 class="text-headline-md font-headline-md text-primary">Farmacia San Rafael</h3>
+<p class="text-on-surface-variant text-body-sm">Cuidado de la Salud • Farmacias</p>
+</div>
+<div class="flex items-center gap-1 bg-surface-container px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-on-surface">4.9</span>
+</div>
+</div>
+<div class="mt-auto pt-stack-md">
+<button class="w-full bg-primary py-4 rounded-2xl text-on-primary font-label-lg hover:bg-primary-container transition-colors active:scale-95 flex items-center justify-center gap-2">
+                            Ver productos
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Business Card 2: Boutique/Store -->
+<div class="bg-surface rounded-2xl shadow-brand overflow-hidden flex flex-col group">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An elegant local boutique store featuring curated home decor and artisanal products displayed on warm wooden shelves. Large glass windows allow soft natural sunlight to illuminate the textured fabrics and ceramic crafts. The aesthetic is sophisticated yet approachable, highlighting the organic warmth and premium local craftsmanship of the brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxMcsbXEHBFakoe4Q9npCs0xpULUtjZo98hg6nZhoJisfkYpGTfp-JshxAgr91noYJuFwH_yRltk-qaIQ5JKkhyOj2Kw5DKAES5xnoivymTpWTVqGi9SN69l22ZSCePDNvFCj6beOs1n_HA9RBGog4GeXjreNDBV3jt1fK2AiAqy6rlPkgKyDjABbRCwicNAmabJNwaRTAjpXk9EncjflBHBkwOCeaHi-ql6c8WR4fryM3S7HZDmQ6fjuoAiux4e4GrhyLT65fv9U"/>
+<div class="absolute top-4 left-4 bg-secondary/10 backdrop-blur-md px-3 py-1 rounded-full">
+<span class="text-secondary font-label-sm uppercase tracking-wider">Novedades</span>
+</div>
+</div>
+<div class="p-stack-md flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-stack-sm">
+<div>
+<h3 class="text-headline-md font-headline-md text-primary">La Tienda de Ana</h3>
+<p class="text-on-surface-variant text-body-sm">Hogar y Estilo • Tiendas</p>
+</div>
+<div class="flex items-center gap-1 bg-surface-container px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-on-surface">4.7</span>
+</div>
+</div>
+<div class="mt-auto pt-stack-md">
+<button class="w-full border-1.5 border-primary text-primary py-4 rounded-2xl font-label-lg hover:bg-surface-container-low transition-colors active:scale-95 flex items-center justify-center gap-2" style="border-width: 1.5px;">
+                            Ver productos
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Business Card 3: Convenience -->
+<div class="bg-surface rounded-2xl shadow-brand overflow-hidden flex flex-col group">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A modern convenience store with well-stocked aisles featuring snacks, beverages, and daily essentials. Bright, clean high-key lighting creates an inviting atmosphere of efficiency and reliability. The visual style is fast-paced yet organized, reflecting the convenience and freshness that local residents rely on for their daily needs." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2nyxGbLXpz22cqBi5Sbznwkn0LbQ-33udlKHbIciOljpyYCVBGukZ-QfpyobExbqdKtsaToK3SFdyCsT2jUzRVtwRxW_DFPFkU2uLvGSe2lOfjTbETSnTevXbmSbXZprWSVGcrJEXp6yAGPj2EvlPEf4yELzYVoq-RR7jmLEomYXY9FYVFFvM5dmX5wmVVrc3rtJ7DyZlxPpV7fyrc8NhBbmO1fBO1G1pTc9cfeoVV1VAFE49J6bFE4_07vBxtDUtMGVHAsLX-Zg"/>
+</div>
+<div class="p-stack-md flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-stack-sm">
+<div>
+<h3 class="text-headline-md font-headline-md text-primary">Express Local</h3>
+<p class="text-on-surface-variant text-body-sm">Abarrotes • Conveniencia</p>
+</div>
+<div class="flex items-center gap-1 bg-surface-container px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-on-surface">4.5</span>
+</div>
+</div>
+<div class="mt-auto pt-stack-md">
+<button class="w-full bg-primary py-4 rounded-2xl text-on-primary font-label-lg hover:bg-primary-container transition-colors active:scale-95 flex items-center justify-center gap-2">
+                            Ver productos
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Business Card 4: Pet Shop -->
+<div class="bg-surface rounded-2xl shadow-brand overflow-hidden flex flex-col group">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A friendly local pet supply store with colorful displays of pet food, toys, and accessories. The setting is warm and welcoming, designed for animal lovers. Soft lighting highlights the quality of premium pet products, evoking a sense of care and community reliability within the neighborhood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTOV0fA9bc385H9c2o1aaVQVmRaRGS2EOP-9Iv1RxCRjcdtKTVbPdlqduTJOLFt4nsF90q7KQFrmestWxIRLibV4E1e-dyCrgjvVPofdbSU2ENY0RN0G2EsCnFUY-0q8ntf-3bc9kPye5BvmQ8a9_Jn3_vl3wiDiebixO-N8eLX53hBwWrTZ_YHWcKkch76ICH3cYhJJWkxUOsNL_97LtUok0IcGkgghaIcwgmXpCr0VNsDwztY-aBm0mHh1hQo8Vubr2lnYu84VY"/>
+</div>
+<div class="p-stack-md flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-stack-sm">
+<div>
+<h3 class="text-headline-md font-headline-md text-primary">Mundo Mascotas</h3>
+<p class="text-on-surface-variant text-body-sm">Animales • Tiendas</p>
+</div>
+<div class="flex items-center gap-1 bg-surface-container px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-on-surface">4.8</span>
+</div>
+</div>
+<div class="mt-auto pt-stack-md">
+<button class="w-full bg-primary py-4 rounded-2xl text-on-primary font-label-lg hover:bg-primary-container transition-colors active:scale-95 flex items-center justify-center gap-2">
+                            Ver productos
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface dark:bg-inverse-surface py-2 pb-safe px-2 border-t border-border-subtle dark:border-on-surface-variant shadow-lg dark:shadow-none rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-on-surface-variant/20 transition-colors py-1 px-4" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim bg-primary-container/10 rounded-full px-4 py-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="text-label-sm font-label-sm">Buscar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-on-surface-variant/20 transition-colors py-1 px-4" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-label-sm font-label-sm">Pedidos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-on-surface-variant/20 transition-colors py-1 px-4" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm">Perfil</span>
+</a>
+</nav>
+</body></html>

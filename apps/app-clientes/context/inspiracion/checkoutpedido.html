@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#404944",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f3f0ea",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-tertiary-container": "#1ac15b",
+                    "primary": "#002e21",
+                    "primary-container": "#0c4635",
+                    "on-primary-container": "#7eb39d",
+                    "secondary": "#9d4300",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#002f10",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-container": "#f0eee8",
+                    "inverse-primary": "#9bd2bb",
+                    "on-surface": "#1c1c18",
+                    "primary-fixed-dim": "#9bd2bb",
+                    "surface-container-highest": "#e5e2dc",
+                    "background": "#fcf9f3",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#FFFFFF",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "on-secondary-fixed-variant": "#783200",
+                    "outline-variant": "#c0c9c3",
+                    "on-secondary-fixed": "#341100",
+                    "secondary-container": "#fd761a",
+                    "on-secondary-container": "#5c2400",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#19503e",
+                    "surface-container-low": "#f6f3ed",
+                    "text-primary": "#1F2937",
+                    "outline": "#707974",
+                    "surface-container-high": "#ebe8e2",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-background": "#1c1c18",
+                    "border-subtle": "#D9E5DF",
+                    "surface-dim": "#dcdad4",
+                    "surface-tint": "#346855",
+                    "secondary-fixed": "#ffdbca",
+                    "secondary-fixed-dim": "#ffb690",
+                    "inverse-surface": "#31312d",
+                    "tertiary-container": "#00481c",
+                    "primary-fixed": "#b7eed6",
+                    "surface-variant": "#e5e2dc",
+                    "on-primary-fixed": "#002117",
+                    "text-secondary": "#6B7280",
+                    "surface-bright": "#fcf9f3",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "2.5rem",
+                    "margin-mobile": "1rem",
+                    "section-gap": "2rem",
+                    "stack-md": "1rem",
+                    "gutter": "1rem",
+                    "stack-sm": "0.5rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "label-sm": ["Inter"],
+                    "headline-xl-mobile": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-md": ["Montserrat"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                    "headline-xl-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .tinted-shadow {
+        box-shadow: 0 4px 12px rgba(12, 70, 53, 0.06);
+      }
+      body {
+        background-color: #fcf9f3;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-mobile py-2 sticky top-0 z-50 bg-surface dark:bg-inverse-surface border-b border-border-subtle dark:border-on-surface-variant shadow-sm dark:shadow-none">
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center p-2 active:scale-95 transition-all duration-200 hover:bg-surface-container-low dark:hover:bg-surface-container-highest rounded-full">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">arrow_back</span>
+</button>
+<h1 class="text-headline-md-mobile font-headline-md text-primary dark:text-primary-fixed-dim">Confirmar Pedido</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">shopping_cart</span>
+</div>
+</header>
+<main class="max-w-3xl mx-auto px-margin-mobile py-stack-md pb-32">
+<!-- Section: Delivery Details Map (Bento Inspired) -->
+<section class="mb-section-gap">
+<div class="bg-surface rounded-2xl overflow-hidden tinted-shadow border border-border-subtle">
+<div class="h-48 w-full bg-surface-container-highest relative">
+<img alt="Mapa de ubicación" class="w-full h-full object-cover" data-alt="A detailed digital map view of a clean city urban layout with minimalist green and cream tones to match the delivery app branding. The map displays thin, elegant street lines and a subtle circular focal point indicating a delivery destination. The lighting is soft and daylight-balanced, maintaining a professional and reliable corporate aesthetic." data-location="Madrid, Spain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWu_sXwLcq4M1ZbKUM1iTcpYZRoDYpZAvxr2oWNXA29aJ216CefQt1RA1CgDjH5C0m3EcT1LRKfQjVM8oEEjWGjz-zffppvUBe8CAUzV5ydVQnwZdcN3FLBD8MGZFjzkQQthuU87a3qP-qK4TbfHEJknLwzVuPR8csiXXaJOF8ezx-CEeeKjiyJCH5MNFJ7AcrwL8Sk4spnwUs0L8JSYX6H8wRlS1YIe7IhjG3WFT9xs_KRbJQqSCLtgC8fLem-W2x5YIvClBKwSo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+<div class="absolute bottom-4 left-4 flex items-center gap-2 bg-surface px-3 py-1.5 rounded-full shadow-md">
+<span class="material-symbols-outlined text-primary text-[20px]">location_on</span>
+<span class="font-label-lg text-label-lg text-primary">Ubicación exacta</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Form and Summary Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Column: Forms -->
+<div class="md:col-span-7 space-y-gutter">
+<!-- Delivery Info Form -->
+<div class="bg-surface p-6 rounded-2xl tinted-shadow border border-border-subtle">
+<h2 class="font-headline-md text-headline-md mb-stack-md text-primary">Datos de Entrega</h2>
+<form class="space-y-4">
+<div>
+<label class="block font-label-lg text-label-lg mb-1 text-on-surface-variant">Nombre Completo</label>
+<input class="w-full px-4 py-3 rounded-xl border border-border-subtle focus:ring-2 focus:ring-primary focus:border-primary bg-surface-container-lowest outline-none transition-all" placeholder="Ej. Juan Pérez" type="text"/>
+</div>
+<div>
+<label class="block font-label-lg text-label-lg mb-1 text-on-surface-variant">Teléfono de contacto</label>
+<input class="w-full px-4 py-3 rounded-xl border border-border-subtle focus:ring-2 focus:ring-primary focus:border-primary bg-surface-container-lowest outline-none transition-all" placeholder="+34 000 000 000" type="tel"/>
+</div>
+<div>
+<label class="block font-label-lg text-label-lg mb-1 text-on-surface-variant">Dirección Exacta</label>
+<input class="w-full px-4 py-3 rounded-xl border border-border-subtle focus:ring-2 focus:ring-primary focus:border-primary bg-surface-container-lowest outline-none transition-all" placeholder="Calle, número, piso/puerta" type="text"/>
+</div>
+<div>
+<label class="block font-label-lg text-label-lg mb-1 text-on-surface-variant">Instrucciones de Entrega (Opcional)</label>
+<textarea class="w-full px-4 py-3 rounded-xl border border-border-subtle focus:ring-2 focus:ring-primary focus:border-primary bg-surface-container-lowest outline-none transition-all resize-none" placeholder="Ej. El timbre no funciona, llamar al llegar..." rows="3"></textarea>
+</div>
+</form>
+</div>
+<!-- Payment Method -->
+<div class="bg-surface p-6 rounded-2xl tinted-shadow border border-border-subtle">
+<h2 class="font-headline-md text-headline-md mb-stack-md text-primary">Método de Pago</h2>
+<div class="flex items-center justify-between p-4 bg-primary/5 rounded-2xl border-2 border-primary">
+<div class="flex items-center gap-3">
+<div class="bg-primary-container p-2 rounded-full text-on-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-primary">Pago contra entrega</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Paga en efectivo al recibir</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Order Summary -->
+<div class="md:col-span-5">
+<div class="bg-surface p-6 rounded-2xl tinted-shadow border border-border-subtle sticky top-24">
+<h2 class="font-headline-md text-headline-md mb-stack-md text-primary">Resumen del Pedido</h2>
+<div class="space-y-4 mb-6">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="w-12 h-12 bg-surface-container-high rounded-lg flex-shrink-0">
+<img class="w-full h-full object-cover rounded-lg" data-alt="A macro shot of a freshly baked artisanal pizza with melting mozzarella, vibrant red tomato sauce, and fresh green basil leaves. The lighting is warm and rustic, highlighting the texture of the crispy crust. The overall aesthetic is gourmet and appetizing, set against a clean white ceramic plate background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb-R7E1b6R9k7mV2fKrtbMzgHPeCZmwzkBDe3HHSNH4VSw3SXuwEKEFgdtx5Pi2mbxdnVecICdC7BgIZFJ45sPef_oGuVWOPbiqFtJtVT1JkV81QMg90Meih7H3clndO_yOm_8ZnVYb02PvB6X7yyFASxJixMC45krtFOqwhWR_qKWOnxWu1pxpPnWj0fQFMpH-yC-66F6MRoonX_-ND51an_QMDV_BS1Zu00-Fq_zIGneG8HeQRp8sQr77UF0_jBONZTv6bkXEAI"/>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-primary">1x Pizza Margherita Especial</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Masa fina, extra albahaca</p>
+</div>
+</div>
+<span class="font-label-lg text-label-lg text-primary">€12.50</span>
+</div>
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="w-12 h-12 bg-surface-container-high rounded-lg flex-shrink-0">
+<img class="w-full h-full object-cover rounded-lg" data-alt="A high-quality studio shot of a classic glass bottle of cold soda with condensation droplets on the surface. The background is a clean, minimalist off-white, reflecting a fresh and modern beverage presentation. Lighting is crisp and bright, focusing on the clarity of the liquid and the iconic bottle shape." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzuxBtCh_CYRX9Gccv7AkMj-yYDDxmSQt-tiDcBrGi3gLH2d_xD28FA1KuF4xIEEkF4UnpZ0KW2AkDcji0t61knvGpjLsOYz4C3ZMFKLiqCJnq6NfLc3QWCy-u8mYJAmekORfW1KQBS99TWmW3lBDLMseFh14SiYuuqJ3Arwz7sdj35IyZp7Jwm8vNcmi46TK1o1cm7e5gKVuLS7TpJ7RwmnGIs6257q3G5quI_7iJHRAUtkpafnAz-k8vCsY4_2FPRamRu6oomrI"/>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-primary">2x Refresco de Cola 330ml</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Bien frío</p>
+</div>
+</div>
+<span class="font-label-lg text-label-lg text-primary">€4.00</span>
+</div>
+</div>
+<div class="border-t border-border-subtle pt-4 space-y-2">
+<div class="flex justify-between text-body-md font-body-md text-on-surface-variant">
+<span>Subtotal</span>
+<span>€16.50</span>
+</div>
+<div class="flex justify-between text-body-md font-body-md text-on-surface-variant">
+<span>Costo de envío</span>
+<span class="text-on-tertiary-container font-semibold">Gratis</span>
+</div>
+<div class="flex justify-between text-headline-md font-headline-md text-primary pt-2">
+<span>Total</span>
+<span>€16.50</span>
+</div>
+</div>
+<div class="mt-6 p-3 bg-secondary/5 rounded-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">timer</span>
+<p class="font-body-sm text-body-sm text-on-secondary-fixed-variant">Entrega estimada: 30-45 min</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Bottom Action (Mobile) / Desktop Footer Button Overlay -->
+<div class="fixed bottom-0 left-0 w-full p-4 bg-surface border-t border-border-subtle z-50 md:static md:bg-transparent md:border-0 md:max-w-3xl md:mx-auto md:p-0 md:mb-12">
+<button class="w-full bg-primary text-on-primary py-4 rounded-2xl font-headline-md text-headline-md shadow-lg active:scale-95 transition-all duration-200 flex justify-between items-center px-8">
+<span>Confirmar pedido</span>
+<div class="flex items-center gap-2">
+<span class="w-px h-6 bg-white/20"></span>
+<span>€16.50</span>
+</div>
+</button>
+</div>
+</body></html>

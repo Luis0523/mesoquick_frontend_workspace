@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#404944",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f3f0ea",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-tertiary-container": "#1ac15b",
+                    "primary": "#002e21",
+                    "primary-container": "#0c4635",
+                    "on-primary-container": "#7eb39d",
+                    "secondary": "#9d4300",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#002f10",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-container": "#f0eee8",
+                    "inverse-primary": "#9bd2bb",
+                    "on-surface": "#1c1c18",
+                    "primary-fixed-dim": "#9bd2bb",
+                    "surface-container-highest": "#e5e2dc",
+                    "background": "#fcf9f3",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#FFFFFF",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "on-secondary-fixed-variant": "#783200",
+                    "outline-variant": "#c0c9c3",
+                    "on-secondary-fixed": "#341100",
+                    "secondary-container": "#fd761a",
+                    "on-secondary-container": "#5c2400",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#19503e",
+                    "surface-container-low": "#f6f3ed",
+                    "text-primary": "#1F2937",
+                    "outline": "#707974",
+                    "surface-container-high": "#ebe8e2",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-background": "#1c1c18",
+                    "border-subtle": "#D9E5DF",
+                    "surface-dim": "#dcdad4",
+                    "surface-tint": "#346855",
+                    "secondary-fixed": "#ffdbca",
+                    "secondary-fixed-dim": "#ffb690",
+                    "inverse-surface": "#31312d",
+                    "tertiary-container": "#00481c",
+                    "primary-fixed": "#b7eed6",
+                    "surface-variant": "#e5e2dc",
+                    "on-primary-fixed": "#002117",
+                    "text-secondary": "#6B7280",
+                    "surface-bright": "#fcf9f3",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "2.5rem",
+                    "margin-mobile": "1rem",
+                    "section-gap": "2rem",
+                    "stack-md": "1rem",
+                    "gutter": "1rem",
+                    "stack-sm": "0.5rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "label-sm": ["Inter"],
+                    "headline-xl-mobile": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-md": ["Montserrat"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                    "headline-xl-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+<!-- Top Navigation (Shell Implementation) -->
+<header class="flex justify-between items-center w-full px-margin-mobile py-2 sticky top-0 z-50 bg-surface shadow-sm transition-all duration-200">
+<div class="flex items-center gap-2">
+<button class="active:scale-95 transition-all duration-200 p-2 hover:bg-surface-container-low rounded-full">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<span class="text-headline-md-mobile font-headline-md text-primary truncate max-w-[200px]">La Cocina de Doña Rosa</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="active:scale-95 transition-all duration-200 p-2 hover:bg-surface-container-low rounded-full">
+<span class="material-symbols-outlined text-primary" data-icon="search">search</span>
+</button>
+<button class="active:scale-95 transition-all duration-200 p-2 hover:bg-surface-container-low rounded-full">
+<span class="material-symbols-outlined text-primary" data-icon="share">share</span>
+</button>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative w-full h-64 md:h-80 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A vibrant, high-end restaurant interior with warm ambient lighting, rustic wooden tables, and lush green plants. The atmosphere is professional and reliable, featuring a modern corporate aesthetic with organic warmth and heavy whitespace. Sunlight filters through large windows, creating a bright and inviting space that celebrates local culinary culture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiAb7dT8ljP2wRZV_oLtAhQxQr3pFy-2DpxBymcTC68mpGcLcBMJWtQLx3ITgYvk8zKHcsr1V7toCl1C2H7i_Rdvslq5LKyrTshl1Kg4byq_oIj56M8iF8XCec6d5AwrIIYCkJNxMy8NfqQrVE9G9mIn20wI3Yq_439Tq82LGUpfm3a19TS0jWl8QTB_yj9blH6TkmxuwTZJn7Iqt5Gu1WNRyffh9B5HXuPkbqti1Y9Fmd1IpLmq2S8YRdFwpEUNsJj3AYnSmyboE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-margin-mobile">
+<div class="flex gap-2 mb-2">
+<span class="bg-primary text-on-primary px-3 py-1 rounded-full text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span> 4.8 (120+)
+                </span>
+<span class="bg-surface text-secondary px-3 py-1 rounded-full text-label-sm font-label-sm">Premium</span>
+</div>
+<h1 class="text-headline-xl-mobile font-headline-xl-mobile text-white">La Cocina de Doña Rosa</h1>
+</div>
+</section>
+<!-- Restaurant Quick Info -->
+<section class="px-margin-mobile py-stack-md bg-surface border-b border-border-subtle">
+<div class="flex flex-wrap gap-4 items-center">
+<div class="flex items-center gap-2">
+<span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-label-sm font-label-sm font-bold">Abierto</span>
+<span class="text-on-surface-variant text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span> 25-35 min
+                </span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="delivery_dining">delivery_dining</span> $15.00
+                </span>
+<span class="text-on-surface-variant text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="info">info</span> Info.
+                </span>
+</div>
+</div>
+<p class="mt-stack-sm text-on-surface-variant text-body-sm">Especialistas en comida tradicional local con un toque moderno y fresco. Ingredientes orgánicos de temporada.</p>
+</section>
+<!-- Category Tabs -->
+<nav class="sticky top-14 z-40 bg-surface border-b border-border-subtle hide-scrollbar overflow-x-auto flex whitespace-nowrap px-margin-mobile">
+<button class="py-4 px-4 border-b-2 border-primary text-primary font-bold text-label-lg transition-colors">Entradas</button>
+<button class="py-4 px-4 border-b-2 border-transparent text-on-surface-variant hover:text-primary text-label-lg transition-colors">Platos Fuertes</button>
+<button class="py-4 px-4 border-b-2 border-transparent text-on-surface-variant hover:text-primary text-label-lg transition-colors">Bebidas</button>
+<button class="py-4 px-4 border-b-2 border-transparent text-on-surface-variant hover:text-primary text-label-lg transition-colors">Postres</button>
+<button class="py-4 px-4 border-b-2 border-transparent text-on-surface-variant hover:text-primary text-label-lg transition-colors">Para Compartir</button>
+</nav>
+<!-- Product List (Bento-style items) -->
+<main class="p-margin-mobile space-y-stack-md">
+<h2 class="text-headline-md font-headline-md text-primary mt-4">Entradas Populares</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Product Item 1 -->
+<div class="bg-surface p-4 rounded-2xl shadow-[0_4px_12px_rgba(12,70,53,0.06)] border border-border-subtle flex gap-4 hover:shadow-[0_8px_16px_rgba(12,70,53,0.1)] transition-all">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-text-primary text-body-lg">Tacos de Canasta</h3>
+<p class="text-on-surface-variant text-body-sm mt-1 line-clamp-2">Surtido de 3 tacos (papa, adobo y frijol) acompañados de salsa verde casera.</p>
+</div>
+<div class="flex items-center justify-between mt-stack-sm">
+<span class="text-primary font-bold text-body-md">$45.00</span>
+<button class="w-8 h-8 bg-primary text-on-primary rounded-lg flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A beautifully plated trio of authentic street-style tacos served on a white ceramic plate. The tacos are topped with vibrant green salsa and fresh cilantro, capturing the local and fresh essence of the brand. High-key natural lighting highlights the texture of the tortillas and the richness of the fillings, presented in a clean, modern corporate food photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiLB5BHkBeo6Ooi8jQ2xGx7JvlIpS-oOMs0BxwebtrIHLrq4tIhx40wuT8kdWx1KttMU1IBHTG9pNm6Oo35-SfngQEqZ766iZ5KWMKgYzXRkFMueVFcxnAmaftbzH887MI-MhUBdMVj47gwVnYTXcG-I6h0zD3544mSuDnn21_Nf6jfEDdn6TpaYlv658rg7eGfgPsm8tRvr-YqTzE-Rh5Z64ea1qTcOBkwYj2Fv7AhtgIFSKt_8FupVjAWY2MIbUrKhPQtiSNBjg"/>
+</div>
+</div>
+<!-- Product Item 2 -->
+<div class="bg-surface p-4 rounded-2xl shadow-[0_4px_12px_rgba(12,70,53,0.06)] border border-border-subtle flex gap-4 hover:shadow-[0_8px_16px_rgba(12,70,53,0.1)] transition-all">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-text-primary text-body-lg">Empanadas de Viento</h3>
+<p class="text-on-surface-variant text-body-sm mt-1 line-clamp-2">Empanadas de queso fritas espolvoreadas con azúcar fina. 2 unidades.</p>
+</div>
+<div class="flex items-center justify-between mt-stack-sm">
+<span class="text-primary font-bold text-body-md">$38.00</span>
+<button class="w-8 h-8 bg-primary text-on-primary rounded-lg flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Golden-brown fried empanadas dusted with a light coating of sugar, served in a minimalist white bowl. The image uses soft, diffused side lighting to emphasize the crispy texture and warm colors. The style is clean and professional, reflecting the reliable and fresh brand identity against a warm cream background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR-OpgpqwwN5U102DrYubaOIHR6pJ9udP9RRrprEQPGufIEi559BwB4-v7smJuioQlf0pFtiLNWI9-Yehv3QhVrS3Xl1FZKJxClZHfe5trYk6uvYYErJsxbsbVIPUToVF6EhCDGhwHMKCC4l2GPmW5htD-vLNC4be3qMtBj3awghoHTcUStPHz5EvtimJz-zBYkqvcNwelYeDcKu_tLSkMHwOhz-Qrdqo4dMgbFu8uBostrGO_OK7LUPOTFDpk_Qm6Z6XHDJ-RR3s"/>
+</div>
+</div>
+</div>
+<h2 class="text-headline-md font-headline-md text-primary mt-8">Platos Fuertes</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Product Item 3 -->
+<div class="bg-surface p-4 rounded-2xl shadow-[0_4px_12px_rgba(12,70,53,0.06)] border border-border-subtle flex gap-4 hover:shadow-[0_8px_16px_rgba(12,70,53,0.1)] transition-all">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-md text-text-primary text-body-lg">Enchiladas Verdes</h3>
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="bolt">bolt</span>
+</div>
+<p class="text-on-surface-variant text-body-sm mt-1 line-clamp-2">4 tortillas rellenas de pollo deshebrado bañadas en salsa verde, crema y queso fresco.</p>
+</div>
+<div class="flex items-center justify-between mt-stack-sm">
+<span class="text-primary font-bold text-body-md">$115.00</span>
+<button class="w-8 h-8 bg-primary text-on-primary rounded-lg flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Traditional green enchiladas beautifully arranged on a plate, topped with generous amounts of fresh cream, crumbled white cheese, and red onion rings. The photography is high-key and bright, capturing the vibrant green of the salsa. The layout is clean with focus on the product, emphasizing quality and appetite appeal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIa_FJ2PcKlvrwwwNZTQhpSxwPmHT91Tlh0L7bQK3YWZX0pajqzBld43H1odJGolte5Xz3_fd_2wJe0fXCOgAyDVIG6CTjHJh8j29Kor-5CwNqVzd03tjQpDY55zbLyu9PP-s-Lsb7eL9jDIn15vSBaUu1_apMITkvSHAUrTIrbm8n35FlYqgYJG7wpulOgeUoqhQUsd2tnK8TihDkEhOkf-B7-QDZqII-rUUh6w0OkQZ7Q4mbZPzLT4J5SGsfDkt0SJORr4OOg9g"/>
+</div>
+</div>
+<!-- Product Item 4 -->
+<div class="bg-surface p-4 rounded-2xl shadow-[0_4px_12px_rgba(12,70,53,0.06)] border border-border-subtle flex gap-4 hover:shadow-[0_8px_16px_rgba(12,70,53,0.1)] transition-all">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-text-primary text-body-lg">Mole Poblano</h3>
+<p class="text-on-surface-variant text-body-sm mt-1 line-clamp-2">Pieza de pollo servida con nuestro mole artesanal, ajonjolí y arroz a la mexicana.</p>
+</div>
+<div class="flex items-center justify-between mt-stack-sm">
+<span class="text-primary font-bold text-body-md">$145.00</span>
+<button class="w-8 h-8 bg-primary text-on-primary rounded-lg flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A rich, dark Mole Poblano dish served with a portion of golden Mexican rice on a traditional clay plate. The lighting is warm and directional, highlighting the complex texture of the sauce and the sesame seed garnish. The scene evokes a sense of authentic heritage blended with modern professional presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTcM8nlGWjw0P0LlrHnkaPQSisA6DrbbXgVRryp1uFZwHITRkEJjUvzxbFRlwqU0OHFukrWP0E-_jWyzSOIu5GpY8-dI8LHRehnfbyDl26exJo7gpGVIdUZ76BEe6j94-06MVTmfYCn4mErKd0YzOLDzq6qUPd0_11C_Zcdiup4D45MsNf_iCSw7Wu24DnbHxvJ5ryS9rWbKntkNBnutUCboN5a-r_cLaY9JDr_-WG6EP4t9UFnkBDZN3-N5Bp232ROJh9rxpZIfo"/>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Cart Bar -->
+<div class="fixed bottom-0 left-0 w-full p-margin-mobile z-50">
+<button class="w-full bg-primary-container text-white py-4 px-6 rounded-2xl flex items-center justify-between shadow-[0_8px_24px_rgba(12,70,53,0.25)] active:scale-[0.98] transition-all">
+<div class="flex items-center gap-3">
+<div class="relative">
+<span class="material-symbols-outlined" data-icon="shopping_basket">shopping_basket</span>
+<span class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">2</span>
+</div>
+<span class="font-headline-md text-label-lg">Ver Carrito</span>
+</div>
+<span class="font-headline-md text-label-lg">$160.00</span>
+</button>
+</div>
+<!-- Bottom Navigation Mockup (Filtered as per instruction: Suppression for sub-page) -->
+<!-- The BottomNavBar is suppressed here because this is a "Details" task-focused screen with a primary "Ver Carrito" action. -->
+</body></html>
