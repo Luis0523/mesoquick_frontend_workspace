@@ -14,6 +14,9 @@ import { ProductsListPage } from '@/pages/products/ProductsListPage';
 import { CreateProductPage } from '@/pages/products/CreateProductPage';
 import { EditProductPage } from '@/pages/products/EditProductPage';
 import { InventoryPage } from '@/pages/inventory/InventoryPage';
+import { CombosListPage } from '@/pages/combos/CombosListPage';
+import { CreateComboPage } from '@/pages/combos/CreateComboPage';
+import { EditComboPage } from '@/pages/combos/EditComboPage';
 import { SchedulePage } from '@/pages/schedule/SchedulePage';
 import { OrdersListPage } from '@/pages/orders/OrdersListPage';
 import { OrderDetailPage } from '@/pages/orders/OrderDetailPage';
@@ -23,19 +26,19 @@ import { RegisterPage } from '@/pages/auth/RegisterPage';
 
 export const router = createBrowserRouter([
   {
-    path: '/login',
-    element: <LoginPage />,
-  },
-  {
-    path: '/register',
-    element: <RegisterPage />,
-  },
-  {
     path: '/',
-    element: <ProtectedRoute />,
+    element: <MainLayout />,
     children: [
       {
-        element: <MainLayout />,
+        path: 'login',
+        element: <LoginPage />,
+      },
+      {
+        path: 'register',
+        element: <RegisterPage />,
+      },
+      {
+        element: <ProtectedRoute />,
         children: [
           // Redirect raíz a dashboard
           {
@@ -71,6 +74,18 @@ export const router = createBrowserRouter([
           {
             path: 'inventory',
             element: <InventoryPage />,
+          },
+          {
+            path: 'combos',
+            element: <CombosListPage />,
+          },
+          {
+            path: 'combos/new',
+            element: <CreateComboPage />,
+          },
+          {
+            path: 'combos/:id/edit',
+            element: <EditComboPage />,
           },
           {
             path: 'schedule',

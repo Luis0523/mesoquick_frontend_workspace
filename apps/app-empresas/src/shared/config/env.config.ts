@@ -10,10 +10,12 @@ export const ENV = {
   COMMERCE_KIND: import.meta.env.VITE_COMMERCE_KIND || '',
   DEFAULT_BUSINESS_ID: Number(import.meta.env.VITE_DEFAULT_BUSINESS_ID || 2030001),
   DEFAULT_RESTAURANT_ID: Number(import.meta.env.VITE_DEFAULT_RESTAURANT_ID || 1),
-  AUTH_MODE: import.meta.env.VITE_AUTH_MODE || 'broker',
+  AUTH_MODE: import.meta.env.PROD ? 'broker' : import.meta.env.VITE_AUTH_MODE || 'broker',
   TEST_USER_EMAIL: import.meta.env.VITE_TEST_USER_EMAIL || 'test@mesoquick.com',
   TEST_USER_PASSWORD: import.meta.env.VITE_TEST_USER_PASSWORD || 'test1234',
   WS_URL: import.meta.env.VITE_WS_URL || 'wss://restaurantes.fly.dev',
+  LOGISTICS_WS_URL: import.meta.env.VITE_LOGISTICS_WS_URL || 'https://modulo-logistica.fly.dev',
+  LOGISTICS_API_URL: import.meta.env.VITE_LOGISTICS_API_URL || '/logistica-api',
   
   // Environment
   NODE_ENV: import.meta.env.VITE_NODE_ENV || import.meta.env.MODE || 'development',

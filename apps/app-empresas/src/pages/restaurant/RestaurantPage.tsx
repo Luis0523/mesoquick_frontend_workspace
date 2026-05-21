@@ -6,6 +6,7 @@
 import { useEffect, useState } from 'react';
 import { useRestaurantStore } from '@/features/manage-restaurant/model/useRestaurantStore';
 import { getCommerceContext } from '@/shared/business/businessContext';
+import { ImageUpload } from '@/shared/ui/ImageUpload';
 import { Edit2, Save, X, Power } from 'lucide-react';
 import type { UpdateRestaurantDTO } from '@/entities/restaurant/model/types';
 
@@ -42,7 +43,15 @@ export const RestaurantPage = () => {
 
   const handleSave = async () => {
     try {
-      await updateRestaurant(restaurantId, formData);
+      const dto = {
+        ...formData,
+        logo_url: formData.logo_url || null,
+        descripcion: formData.descripcion || undefined,
+        correo: formData.correo || undefined,
+      };
+
+      console.log('[RestaurantPage] Enviando PUT con body:', JSON.stringify(dto, null, 2));
+      await updateRestaurant(restaurantId, dto);
       setIsEditing(false);
     } catch (error) {
       console.error('Error al actualizar:', error);
@@ -124,7 +133,7 @@ export const RestaurantPage = () => {
             <button
               onClick={handleSave}
               disabled={isLoading}
-              className="flex items-center gap-2 px-4 py-2 bg-green-base text-white rounded-lg hover:bg-green-bright transition disabled:opacity-50"
+              className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition disabled:opacity-50"
             >
               <Save size={18} />
               Guardar
@@ -181,7 +190,18 @@ export const RestaurantPage = () => {
             <Field label="Teléfono" value={restaurant.telefono} />
             <Field label="Correo" value={restaurant.correo || 'No especificado'} />
             <Field label="Descripción" value={restaurant.descripcion || 'No especificado'} />
-            <Field label="Logo URL" value={restaurant.logo_url || 'No especificado'} />
+            {restaurant.logo_url ? (
+              <div>
+                <label className="text-sm font-medium text-gray-600">Logo</label>
+                <img
+                  src={restaurant.logo_url}
+                  alt="Logo del negocio"
+                  className="mt-1 w-32 h-32 object-cover rounded-lg border"
+                />
+              </div>
+            ) : (
+              <Field label="Logo" value="No especificado" />
+            )}
           </div>
         ) : (
           // Modo Edición
@@ -217,12 +237,11 @@ export const RestaurantPage = () => {
               onChange={(value) => setFormData({ ...formData, descripcion: value })}
               placeholder="Describe tu negocio..."
             />
-            <InputField
-              label="Logo URL"
+            <ImageUpload
+              label="Logo del Negocio"
               value={formData.logo_url || ''}
               onChange={(value) => setFormData({ ...formData, logo_url: value })}
-              placeholder="https://ejemplo.com/logo.png"
-              type="url"
+              previewClass="w-full h-48"
             />
           </div>
         )}

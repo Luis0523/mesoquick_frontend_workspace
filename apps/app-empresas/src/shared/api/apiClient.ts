@@ -11,12 +11,29 @@
  */
 
 import axios, { AxiosError } from 'axios';
+import type { AxiosRequestTransformer } from 'axios';
 import { API_CONFIG } from '../config/api.config';
 import { ENV } from '../config/env.config';
 import { getAuthToken } from '@/features/auth/model/useAuthStore';
 
 // Crear instancia de axios
 export const apiClient = axios.create(API_CONFIG);
+
+// Agregar transformRequest de logging DESPUÉS del por defecto
+const originalTransform = apiClient.defaults.transformRequest;
+const logTransformer: AxiosRequestTransformer = (data) => {
+  if (ENV.IS_DEVELOPMENT && typeof data === 'string') {
+    if (data.length < 10000) {
+      console.log(`[apiClient] JSON body (${data.length} bytes):`, data);
+    } else {
+      console.log(`[apiClient] JSON body (${data.length} bytes, muy largo)`);
+    }
+  }
+  return data;
+};
+apiClient.defaults.transformRequest = Array.isArray(originalTransform)
+  ? [...originalTransform, logTransformer]
+  : [logTransformer];
 
 // Interceptor de Request
 apiClient.interceptors.request.use(

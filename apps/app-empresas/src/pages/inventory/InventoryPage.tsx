@@ -90,7 +90,7 @@ export const InventoryPage = () => {
           <button
             type="button"
             onClick={() => navigate('/products/new')}
-            className="flex items-center gap-2 rounded-lg bg-green-base px-4 py-2 text-white transition hover:bg-green-bright"
+            className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-white transition hover:bg-primary/90"
           >
             <Plus size={18} />
             Agregar producto
@@ -112,7 +112,7 @@ export const InventoryPage = () => {
               <Input label="Mínimo" value={inventoryForm.cantidad_minima} onChange={(value) => setInventoryForm({ ...inventoryForm, cantidad_minima: value })} />
               <Input label="Unidad" value={inventoryForm.unidad_medida} onChange={(value) => setInventoryForm({ ...inventoryForm, unidad_medida: value })} type="text" />
             </div>
-            <button type="button" onClick={handleCreateInventory} disabled={!inventoryForm.producto_id || isLoading} className="mt-4 rounded-lg bg-green-base px-4 py-2 font-medium text-white transition hover:bg-green-bright disabled:opacity-50">
+            <button type="button" onClick={handleCreateInventory} disabled={!inventoryForm.producto_id || isLoading} className="mt-4 rounded-lg bg-primary px-4 py-2 font-medium text-white transition hover:bg-primary/90 disabled:opacity-50">
               Crear inventario
             </button>
           </div>
@@ -172,7 +172,7 @@ export const InventoryPage = () => {
                           type="button"
                           disabled={!productId}
                           onClick={() => productId && navigate(`/products/${productId}/edit`)}
-                          className="inline-flex items-center gap-1 rounded bg-primary px-3 py-2 text-sm text-white transition hover:bg-primary/90 disabled:opacity-50"
+                          className="inline-flex items-center gap-1 rounded bg-tertiary px-3 py-2 text-sm text-white transition hover:bg-tertiary/90 disabled:opacity-50"
                         >
                           <Edit size={15} />
                           Editar

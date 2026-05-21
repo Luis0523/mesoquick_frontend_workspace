@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Save } from 'lucide-react';
 import { useProductsStore } from '@/features/manage-products/model/useProductsStore';
 import { ProductType, PRODUCT_TYPE_LABELS, toCents } from '@/entities/product/model/types';
+import { ImageUpload } from '@/shared/ui/ImageUpload';
 import { getCommerceContext, isBusinessCommerce } from '@/shared/business/businessContext';
 
 export const CreateProductPage = () => {
@@ -57,15 +58,18 @@ export const CreateProductPage = () => {
         categoryId = category.id;
       }
 
-      await createProduct(restaurantId, {
+      const dto = {
         nombre: formData.nombre,
         tipo_producto_id: categoryId,
         descripcion: formData.descripcion || undefined,
         precio: precioEnCentavos,
-        imagen_url: formData.imagen_url || undefined,
+        imagen_url: formData.imagen_url || null,
         internal_code: formData.internal_code || undefined,
         visible_in_catalog: true,
-      });
+      };
+
+      console.log('[CreateProductPage] Enviando POST con body:', JSON.stringify(dto, null, 2));
+      await createProduct(restaurantId, dto);
 
       navigate('/products');
     } catch (error) {
@@ -184,26 +188,20 @@ export const CreateProductPage = () => {
           {errors.precio && <p className="text-red-500 text-sm mt-1">{errors.precio}</p>}
         </div>
 
-        {/* Imagen URL */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            URL de Imagen
-          </label>
-          <input
-            type="url"
-            value={formData.imagen_url}
-            onChange={(e) => setFormData({ ...formData, imagen_url: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-            placeholder="https://ejemplo.com/imagen.jpg"
-          />
-        </div>
+        {/* Imagen */}
+        <ImageUpload
+          label="Imagen del Producto"
+          value={formData.imagen_url}
+          onChange={(value) => setFormData({ ...formData, imagen_url: value })}
+          previewClass="w-full h-48"
+        />
 
         {/* Botones */}
         <div className="flex gap-4 pt-4">
           <button
             type="submit"
             disabled={isLoading}
-            className="flex-1 flex items-center justify-center gap-2 bg-green-base hover:bg-green-bright text-white px-6 py-3 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Save size={20} />
             {isLoading ? 'Guardando...' : 'Guardar Producto'}

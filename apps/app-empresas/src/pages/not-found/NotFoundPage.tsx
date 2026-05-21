@@ -11,7 +11,7 @@ export const NotFoundPage = () => {
     <div className="min-h-[600px] flex items-center justify-center">
       <div className="text-center">
         {/* 404 */}
-        <h1 className="text-9xl font-bold text-gray-200">404</h1>
+        <h1 className="text-9xl font-bold text-primary/10">404</h1>
         
         {/* Message */}
         <h2 className="text-3xl font-bold text-gray-900 mt-4">
@@ -25,7 +25,7 @@ export const NotFoundPage = () => {
         <div className="mt-8 flex gap-4 justify-center">
           <Link
             to="/dashboard"
-            className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg hover:bg-opacity-90 transition"
+            className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition"
           >
             <Home size={20} />
             Ir al Dashboard

@@ -94,12 +94,12 @@ export const DashboardPage = () => {
       )}
 
       {/* Próximamente */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-blue-900 mb-2">
+      <div className="bg-tertiary/5 border border-tertiary/20 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-tertiary mb-2">
           Próximamente
         </h3>
-        <ul className="text-blue-700 space-y-1 text-sm">
-          <li>Graficas de estadisticas</li>
+        <ul className="text-tertiary/80 space-y-1 text-sm">
+          <li>Gráficas de estadísticas</li>
           <li>Pedidos activos en tiempo real</li>
           <li>Alertas y notificaciones</li>
           <li>Resumen de ventas</li>
@@ -119,9 +119,9 @@ interface StatCardProps {
 
 const StatCard = ({ icon: Icon, label, value, color }: StatCardProps) => {
   const colorClasses = {
-    green: 'bg-green-50 text-green-600',
+    green: 'bg-secondary/30 text-primary',
     red: 'bg-red-50 text-red-600',
-    blue: 'bg-blue-50 text-blue-600',
+    blue: 'bg-tertiary/10 text-tertiary',
     purple: 'bg-purple-50 text-purple-600',
     yellow: 'bg-yellow-50 text-yellow-600',
   };

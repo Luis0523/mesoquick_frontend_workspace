@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { Store } from 'lucide-react';
+import { Sofa } from 'lucide-react';
 import { useAuthStore } from '@/features/auth/model/useAuthStore';
 import { ENV } from '@/shared/config/env.config';
 
@@ -33,38 +33,23 @@ export const LoginPage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white md:grid md:grid-cols-[1.05fr_0.95fr]">
-      <section className="hidden bg-[radial-gradient(circle_at_top_left,_#fb923c,_transparent_32%),linear-gradient(135deg,_#111827,_#020617)] p-10 md:flex md:flex-col md:justify-between">
-        <div className="flex items-center gap-3 text-orange-100">
-          <div className="rounded-2xl bg-white/10 p-3">
-            <Store size={28} />
+    <div className="min-h-[calc(100vh-3rem)] flex items-center justify-center px-4 py-8">
+      <div className="w-full max-w-md">
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary mb-4">
+            <Sofa size={32} className="text-secondary" />
           </div>
-          <span className="text-xl font-bold">MesoQuick Empresas</span>
+          <h1 className="text-2xl font-bold text-primary">MesoFood</h1>
+          <p className="text-gray-500 mt-1">Panel Empresarial</p>
         </div>
-        <div className="max-w-xl">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-orange-200">Panel comercial</p>
-          <h1 className="text-5xl font-bold leading-tight">Gestiona tu negocio en un solo lugar.</h1>
-          <p className="mt-6 text-lg text-slate-300">
-            Administra tus productos, horarios y pedidos de forma simple desde tu cuenta.
-          </p>
-        </div>
-        <p className="text-sm text-slate-400">MesoQuick Empresas</p>
-      </section>
 
-      <section className="flex min-h-screen items-center justify-center px-6 py-12">
-        <div className="w-full max-w-md rounded-3xl bg-white p-8 text-slate-900 shadow-2xl">
-          <div className="mb-8 md:hidden">
-            <div className="mb-4 inline-flex rounded-2xl bg-orange-100 p-3 text-primary">
-              <Store size={28} />
-            </div>
-            <h1 className="text-2xl font-bold">MesoQuick Empresas</h1>
-          </div>
-
-          <div className="mb-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Ingreso</p>
-            <h2 className="mt-2 text-3xl font-bold">Inicia sesión</h2>
-            <p className="mt-2 text-sm text-slate-500">
-              {isMockAuth ? `Modo desarrollo: usa ${ENV.TEST_USER_EMAIL} / ${ENV.TEST_USER_PASSWORD}` : 'Usa el correo y contraseña registrados en el broker.'}
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-gray-900">Inicia sesión</h2>
+            <p className="text-sm text-gray-500 mt-1">
+              {isMockAuth
+                ? `Modo desarrollo: usa ${ENV.TEST_USER_EMAIL}`
+                : 'Usa tu correo y contraseña registrados.'}
             </p>
           </div>
 
@@ -76,9 +61,9 @@ export const LoginPage = () => {
 
           <form className="space-y-5" onSubmit={handleSubmit}>
             <label className="block">
-              <span className="text-sm font-semibold text-slate-700">Correo</span>
+              <span className="text-sm font-semibold text-gray-700">Correo</span>
               <input
-                className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 outline-none transition focus:border-primary focus:ring-4 focus:ring-orange-100"
+                className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10"
                 type="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
@@ -87,9 +72,9 @@ export const LoginPage = () => {
               />
             </label>
             <label className="block">
-              <span className="text-sm font-semibold text-slate-700">Contraseña</span>
+              <span className="text-sm font-semibold text-gray-700">Contraseña</span>
               <input
-                className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 outline-none transition focus:border-primary focus:ring-4 focus:ring-orange-100"
+                className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10"
                 type="password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
@@ -98,7 +83,7 @@ export const LoginPage = () => {
               />
             </label>
             <button
-              className="w-full rounded-xl bg-primary px-4 py-3 font-bold text-white transition hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-70"
+              className="w-full rounded-xl bg-primary px-4 py-3 font-bold text-white transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-70"
               type="submit"
               disabled={isLoading}
             >
@@ -108,7 +93,7 @@ export const LoginPage = () => {
 
           {isMockAuth && (
             <button
-              className="mt-3 w-full rounded-xl border border-orange-200 px-4 py-3 font-bold text-primary transition hover:bg-orange-50"
+              className="mt-3 w-full rounded-xl border border-primary/20 px-4 py-3 font-bold text-primary transition hover:bg-primary/5"
               type="button"
               onClick={() => {
                 setEmail(ENV.TEST_USER_EMAIL);
@@ -119,14 +104,14 @@ export const LoginPage = () => {
             </button>
           )}
 
-          <p className="mt-6 text-center text-sm text-slate-500">
+          <p className="mt-6 text-center text-sm text-gray-500">
             ¿Aún no tienes cuenta?{' '}
-            <Link className="font-bold text-primary hover:text-primary-dark" to="/register">
+            <Link className="font-bold text-primary hover:text-primary/80" to="/register">
               Registra tu negocio
             </Link>
           </p>
         </div>
-      </section>
-    </main>
+      </div>
+    </div>
   );
 };

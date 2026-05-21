@@ -38,7 +38,7 @@ export interface CreateRestaurantDTO {
   telefono: string;
   descripcion?: string;
   correo?: string;
-  logo_url?: string;
+  logo_url?: string | null;
   disponible?: boolean;
 }
 

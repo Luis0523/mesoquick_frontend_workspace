@@ -145,7 +145,7 @@ export const SchedulePage = () => {
                     </h3>
                     <button
                       onClick={() => handleOpenModal(day as DayOfWeek)}
-                      className="flex items-center gap-1 text-sm text-green-base hover:text-green-bright transition-colors"
+                      className="flex items-center gap-1 text-sm text-primary hover:text-primary/70 transition-colors"
                     >
                       <Plus size={16} />
                       Agregar horario
@@ -280,7 +280,7 @@ export const SchedulePage = () => {
               <div className="flex gap-3 pt-4">
                 <button
                   type="submit"
-                  className="flex-1 bg-green-base hover:bg-green-bright text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                  className="flex-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-colors"
                 >
                   {editingSchedule ? 'Actualizar' : 'Crear'}
                 </button>

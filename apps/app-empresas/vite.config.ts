@@ -25,10 +25,16 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, '/api'),
       },
       '/business-api': {
-        target: 'https://proyectoarqui.onrender.com',
+        target: 'https://broker-services-production.up.railway.app',
         changeOrigin: true,
         secure: true,
         rewrite: (path) => path.replace(/^\/business-api/, '/api'),
+      },
+      '/logistica-api': {
+        target: 'https://modulo-logistica.fly.dev',
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => '/api' + path.replace(/^\/logistica-api/, ''),
       },
     },
   },

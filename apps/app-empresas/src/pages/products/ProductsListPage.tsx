@@ -60,7 +60,7 @@ export const ProductsListPage = () => {
         <h1 className="text-3xl font-semibold text-primary">Productos</h1>
         <button
           onClick={() => navigate('/products/new')}
-          className="flex items-center gap-2 bg-green-base hover:bg-green-bright text-white px-4 py-2 rounded-lg transition-colors"
+          className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-colors"
         >
           <Plus size={20} />
           Nuevo Producto
@@ -73,7 +73,7 @@ export const ProductsListPage = () => {
           <p className="text-gray-500 mb-4">No hay productos registrados</p>
           <button
             onClick={() => navigate('/products/new')}
-            className="text-green-base hover:underline"
+            className="text-primary hover:underline font-medium"
           >
             Crear primer producto
           </button>
@@ -111,7 +111,7 @@ export const ProductsListPage = () => {
                     {product.descripcion}
                   </p>
                 )}
-                <p className="text-xl font-bold text-green-base mb-4">
+                <p className="text-xl font-bold text-primary mb-4">
                   {formatProductPrice(product.precio)}
                 </p>
 

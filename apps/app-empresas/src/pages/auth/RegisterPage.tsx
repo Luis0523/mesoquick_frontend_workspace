@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { Building2 } from 'lucide-react';
+import { Sofa } from 'lucide-react';
 import { useAuthStore } from '@/features/auth/model/useAuthStore';
 
 export const RegisterPage = () => {
@@ -50,26 +50,20 @@ export const RegisterPage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-[#fff7ed] px-6 py-10">
-      <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-        <section className="rounded-[2rem] bg-slate-950 p-8 text-white shadow-xl lg:sticky lg:top-10 lg:h-[calc(100vh-5rem)]">
-          <div className="mb-12 flex items-center gap-3">
-            <div className="rounded-2xl bg-primary p-3">
-              <Building2 size={28} />
-            </div>
-            <span className="text-xl font-bold">MesoQuick Empresas</span>
+    <div className="min-h-[calc(100vh-3rem)] flex items-center justify-center px-4 py-8">
+      <div className="w-full max-w-2xl">
+        <div className="text-center mb-6">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary mb-4">
+            <Sofa size={32} className="text-secondary" />
           </div>
-          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-orange-200">Registro</p>
-          <h1 className="mt-4 text-4xl font-bold leading-tight">Crea tu cuenta y empieza a gestionar tu negocio.</h1>
-          <p className="mt-5 text-slate-300">
-            Registra los datos principales de tu negocio para acceder al panel de administración.
-          </p>
-        </section>
+          <h1 className="text-2xl font-bold text-primary">MesoFood</h1>
+          <p className="text-gray-500 mt-1">Crea tu cuenta empresarial</p>
+        </div>
 
-        <section className="rounded-[2rem] bg-white p-6 shadow-xl md:p-8">
-          <div className="mb-8">
-            <h2 className="text-3xl font-bold text-slate-900">Crear cuenta de negocio</h2>
-            <p className="mt-2 text-sm text-slate-500">Completa los datos del negocio y del propietario.</p>
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-gray-900">Registrar negocio</h2>
+            <p className="text-sm text-gray-500 mt-1">Completa los datos del negocio y del propietario.</p>
           </div>
 
           {error && (
@@ -80,7 +74,10 @@ export const RegisterPage = () => {
 
           <form className="space-y-8" onSubmit={handleSubmit}>
             <div>
-              <h3 className="mb-4 text-lg font-bold text-slate-900">Datos del negocio</h3>
+              <h3 className="mb-4 text-lg font-bold text-primary flex items-center gap-2">
+                <span className="w-1.5 h-6 bg-primary rounded-full inline-block" />
+                Datos del negocio
+              </h3>
               <div className="grid gap-5 md:grid-cols-2">
                 <TextField label="Nombre comercial" value={form.restaurantName} onChange={(value) => updateField('restaurantName', value)} />
                 <TextField label="Teléfono del negocio" value={form.restaurantPhone} onChange={(value) => updateField('restaurantPhone', value)} />
@@ -90,7 +87,10 @@ export const RegisterPage = () => {
             </div>
 
             <div>
-              <h3 className="mb-4 text-lg font-bold text-slate-900">Propietario</h3>
+              <h3 className="mb-4 text-lg font-bold text-primary flex items-center gap-2">
+                <span className="w-1.5 h-6 bg-tertiary rounded-full inline-block" />
+                Propietario
+              </h3>
               <div className="grid gap-5 md:grid-cols-2">
                 <TextField label="Nombre" value={form.firstName} onChange={(value) => updateField('firstName', value)} />
                 <TextField label="Apellido" value={form.lastName} onChange={(value) => updateField('lastName', value)} />
@@ -101,7 +101,7 @@ export const RegisterPage = () => {
             </div>
 
             <button
-              className="w-full rounded-xl bg-primary px-4 py-3 font-bold text-white transition hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-70"
+              className="w-full rounded-xl bg-primary px-4 py-3 font-bold text-white transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-70"
               type="submit"
               disabled={isLoading}
             >
@@ -109,15 +109,15 @@ export const RegisterPage = () => {
             </button>
           </form>
 
-          <p className="mt-6 text-center text-sm text-slate-500">
+          <p className="mt-6 text-center text-sm text-gray-500">
             ¿Ya tienes cuenta?{' '}
-            <Link className="font-bold text-primary hover:text-primary-dark" to="/login">
+            <Link className="font-bold text-primary hover:text-primary/80" to="/login">
               Inicia sesión
             </Link>
           </p>
-        </section>
+        </div>
       </div>
-    </main>
+    </div>
   );
 };
 
@@ -131,9 +131,9 @@ interface FieldProps {
 
 const TextField = ({ label, value, onChange, className = '', type = 'text' }: FieldProps) => (
   <label className={`block ${className}`}>
-    <span className="text-sm font-semibold text-slate-700">{label}</span>
+    <span className="text-sm font-semibold text-gray-700">{label}</span>
     <input
-      className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 outline-none transition focus:border-primary focus:ring-4 focus:ring-orange-100"
+      className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10"
       type={type}
       value={value}
       onChange={(event) => onChange(event.target.value)}
@@ -144,9 +144,9 @@ const TextField = ({ label, value, onChange, className = '', type = 'text' }: Fi
 
 const TextArea = ({ label, value, onChange, className = '' }: FieldProps) => (
   <label className={`block ${className}`}>
-    <span className="text-sm font-semibold text-slate-700">{label}</span>
+    <span className="text-sm font-semibold text-gray-700">{label}</span>
     <textarea
-      className="mt-2 min-h-28 w-full rounded-xl border border-slate-200 px-4 py-3 outline-none transition focus:border-primary focus:ring-4 focus:ring-orange-100"
+      className="mt-2 min-h-28 w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10"
       value={value}
       onChange={(event) => onChange(event.target.value)}
       required

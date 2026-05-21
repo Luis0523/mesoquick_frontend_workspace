@@ -64,7 +64,7 @@ export interface CreateProductDTO {
   nombre: string;
   precio: number;            // Ya debe venir en centavos
   descripcion?: string;
-  imagen_url?: string;
+  imagen_url?: string | null;
   visible_in_catalog?: boolean;
   internal_code?: string;
 }
